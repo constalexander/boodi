@@ -1,7 +1,7 @@
 @use '../../../../apps/boodi/src/app/styles/colors';
 
 body.welcome {
-  background: colors.$blueOxford;
+  background: hsl(224 71% 4%);
   font-family: 'Tilt Neon', sans-serif;
   .container {
     display: flex;
@@ -80,7 +80,7 @@ body.welcome {
   line-height: 1rem;
   cursor: pointer;
   &.primary-btn {
-    background: colors.$blueOxford;
+    background: hsl(224 71% 4%);
     color: colors.$blueIce;
     border: 4px solid colors.$blueIce;
     &:hover {

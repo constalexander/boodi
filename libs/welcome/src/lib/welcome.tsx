@@ -16,12 +16,8 @@ export function Welcome(props: WelcomeProps) {
 
   const navigate = useNavigate();
 
-  const navigateToChat = async () => {
-    navigate('/release-your-worries');
-  };
-
   return (
-    <div className={`${styles['container']}`}>
+    <div className={`${styles['container']} !pr-4`}>
       <div className={`${styles['header']}`}>
         <h1>
           For Innovators: Elevate Your <b />
@@ -33,10 +29,10 @@ export function Welcome(props: WelcomeProps) {
           <button
             className={`${styles['primary-btn']}`}
             onClick={() => {
-              navigateToChat();
+              navigate('/whats-on-your-mind');
             }}
           >
-            Chat With Boodi
+            What's on your mind?
           </button>
         </p>
         <p>
@@ -77,15 +73,14 @@ export function Welcome(props: WelcomeProps) {
         </p>
       </div>
       <div className={`${styles['footer']}`}>
-        {' '}
         <p className="w-full">
           <button
             className={`${styles['primary-btn']}`}
             onClick={() => {
-              navigateToChat();
+              navigate('/release-your-worries');
             }}
           >
-            Release Your Worries
+            Release your worries
           </button>
         </p>
       </div>
