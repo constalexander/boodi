@@ -48,7 +48,6 @@ export function Chat(props: ChatProps) {
 
       if (error) return;
       setCurrentuser(user);
-      //console.log(user);
     }
   };
 
@@ -56,9 +55,6 @@ export function Chat(props: ChatProps) {
     const { data: session, error: sessionError } =
       await supabase.auth.getSession();
     setSession(session);
-
-    // console.log('session-data', session);
-    // console.log('session-error', sessionError);
   };
 
   const signInWithOAuth = async () => {
@@ -87,13 +83,9 @@ export function Chat(props: ChatProps) {
   const refreshSession = async () => {
     const { data, error } = await supabase.auth.refreshSession();
     const { session, user } = data;
-    console.log('refreshed session', session, user);
 
     // const { data: refreshed, error: refreshError } =
     //   await supabase.auth.refreshSession();
-
-    // console.log('sessionrefresh-data', refreshed);
-    // console.log('sessionrefresh-error', refreshError);
   };
 
   const showMeTheTruth = async (fullPath = false) => {
@@ -182,7 +174,6 @@ export function Chat(props: ChatProps) {
 
   const getEightfoldPath = async () => {
     const url = API_URLS.api.eightfoldPathFull;
-    console.log(url);
     const socket = new WebSocket(url);
 
     socket.onopen = () => {
@@ -363,12 +354,13 @@ export function Chat(props: ChatProps) {
       )}
 
       <div className={styles['footer-links']}>
-        <a href="https://paypal.me/djprorok" target="_blank">
+        <a href="https://paypal.me/djprorok" target="_blank" rel="noreferrer">
           Donate
         </a>
         <a
           href="https://calendly.com/davidprorok/clarity-session-for-innovators"
           target="_blank"
+          rel="noreferrer"
         >
           Find a coach
         </a>

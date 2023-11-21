@@ -81,7 +81,7 @@ export function SignInPopup(props: SignInPopupProps) {
             Sign Up
           </button>
           <button
-            className={`${styles['ghost-btn']} ${styles['sign-in-btn']}`}
+            className={`${styles['primary-btn']} ${styles['sign-in-btn']}`}
             onClick={() => {
               signInWithEmail();
             }}
