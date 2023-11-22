@@ -150,12 +150,20 @@ export function Chat(props: ChatProps) {
     }
   };
 
-  const getFourTruths_ws = () => {
+  const getFourTruths_ws = async () => {
     const url = API_URLS.api.fourNobleTruths;
     const socket = new WebSocket(url);
 
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    let userUUID: string | null = '';
+    if (sessionData && !sessionError) {
+      userUUID = sessionData?.session?.user?.id || null;
+    }
+
     socket.onopen = () => {
-      const request = JSON.stringify({ suffering });
+      const request = JSON.stringify({ suffering, userUUID });
       socket.send(request);
     };
 
@@ -176,8 +184,16 @@ export function Chat(props: ChatProps) {
     const url = API_URLS.api.eightfoldPathFull;
     const socket = new WebSocket(url);
 
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    let userUUID: string | null = '';
+    if (sessionData && !sessionError) {
+      userUUID = sessionData?.session?.user?.id || null;
+    }
+
     socket.onopen = () => {
-      const request = JSON.stringify({ suffering });
+      const request = JSON.stringify({ suffering, userUUID });
       socket.send(request);
     };
 
