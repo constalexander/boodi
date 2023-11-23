@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@boodi/providers/theme.provider';
-import { URLServiceProvider } from '@boodi/providers/url.provider';
+import { URLProvider } from '@boodi/providers/url.provider';
 import Xoxo from './pages/xoxo/xoxo';
 import NotFound404 from './pages/not-found-404/not-found-404';
 import WhatsOnYourMind from './pages/whats-on-your-mind/whats-on-your-mind';
@@ -11,7 +11,7 @@ import Home from './pages/home/home';
 export function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <URLServiceProvider>
+      <URLProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ export function App() {
             <Route path="*" element={<NotFound404 />} />
           </Routes>
         </Router>
-      </URLServiceProvider>
+      </URLProvider>
     </ThemeProvider>
   );
 }
