@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@boodi/ui/dropdown-menu';
 import { Textarea } from '@boodi/ui/textarea';
-import { useTheme } from '@boodi/ui/theme-provider';
+import { useTheme } from '@boodi/providers/theme.provider';
 
 import styles from './xoxo.module.scss';
 

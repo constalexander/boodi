@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@boodi/auth';
 import DOMPurify from 'dompurify';
 import { SignInPopup } from '@boodi/auth';
-import { API_URLS } from '@boodi/services/api-urls';
+import { useURLService } from '@boodi/providers/url.provider';
 import styles from './chat.module.scss';
 
 /* eslint-disable-next-line */
 export interface ChatProps {}
 
 export function Chat(props: ChatProps) {
+  const urlService = useURLService();
+
   const [truthBtnDisabled, setTruthBtnDisabled] = useState(false);
   const [truthBtnText, setTruthBtnText] = useState('Show Me The Truth');
   const [session, setSession] = useState<any>(null);
@@ -119,7 +121,7 @@ export function Chat(props: ChatProps) {
   };
 
   const getFourTruths = async () => {
-    const url = API_URLS.api.fourNobleTruths;
+    const url = urlService.api.fourNobleTruths;
 
     try {
       const response = await fetch(url, {
@@ -151,7 +153,7 @@ export function Chat(props: ChatProps) {
   };
 
   const getFourTruths_ws = async () => {
-    const url = API_URLS.api.fourNobleTruths;
+    const url = urlService.api.fourNobleTruths;
     const socket = new WebSocket(url);
 
     const { data: sessionData, error: sessionError } =
@@ -181,7 +183,7 @@ export function Chat(props: ChatProps) {
   };
 
   const getEightfoldPath = async () => {
-    const url = API_URLS.api.eightfoldPathFull;
+    const url = urlService.api.eightfoldPathFull;
     const socket = new WebSocket(url);
 
     const { data: sessionData, error: sessionError } =
