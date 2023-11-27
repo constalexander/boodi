@@ -1,7 +1,7 @@
 {
-  "name": "providers",
+  "name": "hooks",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/providers/src",
+  "sourceRoot": "libs/hooks/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,7 +9,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/providers/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/hooks/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
@@ -17,7 +17,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/libs/providers"
+        "reportsDirectory": "../../coverage/libs/hooks"
       }
     }
   }

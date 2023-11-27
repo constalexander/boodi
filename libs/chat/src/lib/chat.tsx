@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@boodi/auth';
 import DOMPurify from 'dompurify';
 import { SignInPopup } from '@boodi/auth';
-import { useURLService } from '@boodi/providers/url.provider';
+import useURLService from '@boodi/hooks/url.hook';
 import styles from './chat.module.scss';
 
 /* eslint-disable-next-line */

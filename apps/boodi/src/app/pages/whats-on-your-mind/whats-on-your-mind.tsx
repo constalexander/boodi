@@ -2,7 +2,7 @@ import { Button } from '@boodi/ui/button';
 import styles from './whats-on-your-mind.module.scss';
 import { Input } from '@boodi/ui/input';
 import { useRef, useState } from 'react';
-import { useURLService } from '@boodi/providers/url.provider';
+import useURLService from '@boodi/hooks/url.hook';
 import DOMPurify from 'dompurify';
 import { MousePointerClick } from 'lucide-react';
 import { supabase } from '@boodi/auth';
