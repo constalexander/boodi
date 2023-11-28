@@ -16,6 +16,15 @@ export function Welcome(props: WelcomeProps) {
 
   const navigate = useNavigate();
 
+  const trackEvent = () => {
+    // if (typeof (window as any)._gs !== 'undefined') return;
+    // const _gs = (window as any)._gs;
+
+    (window as any)._gs('event', 'ButtonClicked', {
+      prop: 'any value',
+    });
+  };
+
   return (
     <div className={`${styles['container']} !pr-4`}>
       <div className={`${styles['header']}`}>

@@ -28,5 +28,6 @@
     },
     "jsx": "react-jsx"
   },
+  "include": ["libs/models/src/**/*.d.ts"],
   "exclude": ["node_modules", "tmp"]
 }
