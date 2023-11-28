@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '@boodi/auth';
 import DOMPurify from 'dompurify';
+import { supabase } from '@boodi/auth';
+import { gsEventName, trackEventName } from '@boodi/analytics';
 import { SignInPopup } from '@boodi/auth';
 import useURLService from '@boodi/hooks/url.hook';
 import styles from './chat.module.scss';
@@ -257,6 +258,7 @@ export function Chat(props: ChatProps) {
           <button
             className={`${styles['ghost-btn']} w-[100px] h-[20px] self-end`}
             onClick={() => {
+              trackEventName(gsEventName.signOut_1);
               signOut();
             }}
           >
@@ -270,6 +272,7 @@ export function Chat(props: ChatProps) {
             onClick={() => {
               //signInWithEmail();
               //signInWithOAuth();
+              trackEventName(gsEventName.signIn_1);
               toggleSignInPopup();
             }}
           >
@@ -307,7 +310,10 @@ export function Chat(props: ChatProps) {
           className={`${styles['primary-btn']} ${
             truthBtnDisabled ? styles['disabled'] : ''
           }`}
-          onClick={() => showMeTheTruth()}
+          onClick={() => {
+            trackEventName(gsEventName.showMeTheTruth_1);
+            showMeTheTruth();
+          }}
           disabled={truthBtnDisabled}
         >
           {truthBtnText}
@@ -358,6 +364,7 @@ export function Chat(props: ChatProps) {
           <button
             className={`${styles['primary-btn']} w-auto`}
             onClick={() => {
+              trackEventName(gsEventName.gimmeThatBoodi_1);
               toggleSignInPopup();
             }}
           >
@@ -372,13 +379,19 @@ export function Chat(props: ChatProps) {
       )}
 
       <div className={styles['footer-links']}>
-        <a href="https://paypal.me/djprorok" target="_blank" rel="noreferrer">
+        <a
+          href="https://paypal.me/djprorok"
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackEventName(gsEventName.donate_1)}
+        >
           Donate
         </a>
         <a
           href="https://calendly.com/davidprorok/clarity-session-for-innovators"
           target="_blank"
           rel="noreferrer"
+          onClick={() => trackEventName(gsEventName.findACoach_1)}
         >
           Find a coach
         </a>

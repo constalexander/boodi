@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@boodi/analytics": ["libs/analytics/src/index.ts"],
       "@boodi/auth": ["libs/auth/src/index.ts"],
       "@boodi/chat": ["libs/chat/src/index.ts"],
       "@boodi/contexts/*": ["libs/contexts/src/*"],
@@ -28,6 +29,6 @@
     },
     "jsx": "react-jsx"
   },
-  "include": ["libs/models/src/**/*.d.ts"],
+  "include": ["apps/**/*.ts", "libs/**/*.ts"],
   "exclude": ["node_modules", "tmp"]
 }

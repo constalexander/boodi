@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { gsEventName, trackEventName } from '@boodi/analytics';
 import styles from './welcome.module.scss';
 
 /* eslint-disable-next-line */
@@ -16,15 +17,6 @@ export function Welcome(props: WelcomeProps) {
 
   const navigate = useNavigate();
 
-  const trackEvent = () => {
-    // if (typeof (window as any)._gs !== 'undefined') return;
-    // const _gs = (window as any)._gs;
-
-    (window as any)._gs('event', 'ButtonClicked', {
-      prop: 'any value',
-    });
-  };
-
   return (
     <div className={`${styles['container']} !pr-4`}>
       <div className={`${styles['header']}`}>
@@ -38,6 +30,7 @@ export function Welcome(props: WelcomeProps) {
           <button
             className={`${styles['primary-btn']}`}
             onClick={() => {
+              trackEventName(gsEventName.whatsOnYourMind_1);
               navigate('/whats-on-your-mind');
             }}
           >
@@ -86,6 +79,7 @@ export function Welcome(props: WelcomeProps) {
           <button
             className={`${styles['primary-btn']}`}
             onClick={() => {
+              trackEventName(gsEventName.releaseYourWorries_1);
               navigate('/release-your-worries');
             }}
           >

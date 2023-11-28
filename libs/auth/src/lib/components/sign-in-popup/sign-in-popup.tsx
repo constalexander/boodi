@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import styles from './sign-in-popup.module.scss';
 import { createClient } from '@supabase/supabase-js';
+import { gsEventName, trackEventName } from '@boodi/analytics';
+import styles from './sign-in-popup.module.scss';
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -75,6 +76,7 @@ export function SignInPopup(props: SignInPopupProps) {
           <button
             className={`${styles['ghost-btn']} ${styles['sign-up-btn']}`}
             onClick={() => {
+              trackEventName(gsEventName.signUp_1);
               signUpWithEmail();
             }}
           >
@@ -83,6 +85,7 @@ export function SignInPopup(props: SignInPopupProps) {
           <button
             className={`${styles['primary-btn']} ${styles['sign-in-btn']}`}
             onClick={() => {
+              trackEventName(gsEventName.signIn_2);
               signInWithEmail();
             }}
           >
