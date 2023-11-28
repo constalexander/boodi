@@ -1,11 +1,12 @@
-import { Button } from '@boodi/ui/button';
-import styles from './whats-on-your-mind.module.scss';
-import { Input } from '@boodi/ui/input';
 import { useRef, useState } from 'react';
-import useURLService from '@boodi/hooks/url.hook';
 import DOMPurify from 'dompurify';
 import { MousePointerClick } from 'lucide-react';
+import { Button } from '@boodi/ui/button';
+import { gsEventName, trackEventName } from '@boodi/analytics';
 import { supabase } from '@boodi/auth';
+import { Input } from '@boodi/ui/input';
+import useURLService from '@boodi/hooks/url.hook';
+import styles from './whats-on-your-mind.module.scss';
 
 /* eslint-disable-next-line */
 export interface WhatsOnYourMindProps {}
@@ -89,7 +90,10 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
           />
           <Button
             className="mt-3"
-            onClick={() => go()}
+            onClick={() => {
+              trackEventName(gsEventName.whatsOnYourMind_2);
+              go();
+            }}
             disabled={isButtonDisabled}
           >
             <MousePointerClick />
@@ -112,6 +116,7 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
           target="_blank"
           rel="noreferrer"
           className="text-white text-xs"
+          onClick={() => trackEventName(gsEventName.privacyPolicy_1)}
         >
           Privacy Policy
         </a>
