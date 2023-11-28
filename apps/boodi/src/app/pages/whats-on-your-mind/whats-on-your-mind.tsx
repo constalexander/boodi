@@ -2,7 +2,7 @@ import { Button } from '@boodi/ui/button';
 import styles from './whats-on-your-mind.module.scss';
 import { Input } from '@boodi/ui/input';
 import { useRef, useState } from 'react';
-import { API_URLS } from '@boodi/services/api-urls';
+import useURLService from '@boodi/hooks/url.hook';
 import DOMPurify from 'dompurify';
 import { MousePointerClick } from 'lucide-react';
 import { supabase } from '@boodi/auth';
@@ -11,6 +11,8 @@ import { supabase } from '@boodi/auth';
 export interface WhatsOnYourMindProps {}
 
 export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
+  const urlService = useURLService();
+
   const [inputText, setInputText] = useState('');
   const [boodiResponse, setBoodiResponse] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -36,7 +38,7 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
       webSocketRef.current.close();
     }
 
-    const url = API_URLS.api.zeroShotWisdom;
+    const url = urlService.api.zeroShotWisdom;
     const socket = new WebSocket(url);
     webSocketRef.current = socket;
 

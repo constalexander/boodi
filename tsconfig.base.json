@@ -17,7 +17,11 @@
     "paths": {
       "@boodi/auth": ["libs/auth/src/index.ts"],
       "@boodi/chat": ["libs/chat/src/index.ts"],
-      "@boodi/services": ["libs/services/src/index.ts"],
+      "@boodi/contexts/*": ["libs/contexts/src/*"],
+      "@boodi/guards/*": ["libs/guards/src/*"],
+      "@boodi/hooks/*": ["libs/hooks/src/*"],
+      "@boodi/models/*": ["libs/models/src/*"],
+      "@boodi/providers/*": ["libs/providers/src/*"],
       "@boodi/services/*": ["libs/services/src/*"],
       "@boodi/ui/*": ["libs/ui/src/lib/*"],
       "@boodi/welcome": ["libs/welcome/src/index.ts"]
