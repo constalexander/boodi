@@ -22,7 +22,7 @@ __export(health_check_controller_exports, {
 });
 module.exports = __toCommonJS(health_check_controller_exports);
 const check = async (req, res) => {
-  res.json({ status: "OK", version: "1" });
+  res.json({ status: "OK", version: "2" });
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
