@@ -15,14 +15,7 @@ import { tinyws } from './middlewares/tinyws.middleware.js';
 import { loadPromptsIntoConfig } from './services/supabase.service.js';
 
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Express {
-    export interface Request {
-      ws: () => Promise<ws>;
-    }
-  }
-}
+
 
 const app = express();
 

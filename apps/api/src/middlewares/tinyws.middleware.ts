@@ -6,6 +6,16 @@ import http from 'http'
  * https://github.com/tinyhttp/tinyws/blob/master/src/index.ts
  */
 
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace Express {
+      export interface Request {
+        ws: () => Promise<ws>;
+      }
+    }
+  }
+
 export interface TinyWSRequest extends http.IncomingMessage {
   ws: () => Promise<ws>
 }
