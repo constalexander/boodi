@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/routes/tts.route.ts"],
+  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { tts } from \"../controllers/tts.controller.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\n\r\nconst ttsRouter = express.Router();\r\n\r\nttsRouter.get(\"/\", limiter, catchErrors(tts));\r\n\r\nexport default ttsRouter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,qCAAoB;AACpB,4BAAoB;AACpB,qCAAwB;AAExB,MAAM,YAAY,eAAAA,QAAQ,OAAO;AAEjC,UAAU,IAAI,KAAK,+BAAAC,aAAS,+BAAAC,SAAY,yBAAG,CAAC;AAE5C,IAAO,oBAAQ;",
+  "names": ["express", "limiter", "catchErrors"]
+}

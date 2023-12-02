@@ -24,6 +24,7 @@ tinywsPromise.then((module) => {
 });
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     export interface Request {
       ws: () => Promise<ws>;

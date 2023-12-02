@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/routes/health-check.route.ts"],
+  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { check } from \"../controllers/health-check.controller.js\";\r\n\r\nconst healthCheckRouter = express.Router();\r\n\r\nhealthCheckRouter.get(\"/\", limiter, check);\r\n\r\nexport default healthCheckRouter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,qCAAoB;AACpB,qCAAsB;AAEtB,MAAM,oBAAoB,eAAAA,QAAQ,OAAO;AAEzC,kBAAkB,IAAI,KAAK,+BAAAC,SAAS,oCAAK;AAEzC,IAAO,6BAAQ;",
+  "names": ["express", "limiter"]
+}

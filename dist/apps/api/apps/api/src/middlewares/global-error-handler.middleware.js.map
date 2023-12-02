@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../../apps/api/src/middlewares/global-error-handler.middleware.ts"],
-  "sourcesContent": ["const globalErrorHandler = (err: any, req: any, res: any, next: any) => {\r\n  const statusCode = err.statusCode || 500;\r\n  console.error(err.message, err.stack);\r\n  res.status(statusCode).json({ message: err.message });\r\n\r\n  return;\r\n};\r\n\r\nexport default globalErrorHandler;\r\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,MAAM,qBAAqB,CAAC,KAAU,KAAU,KAAU,SAAc;AACtE,QAAM,aAAa,IAAI,cAAc;AACrC,UAAQ,MAAM,IAAI,SAAS,IAAI,KAAK;AACpC,MAAI,OAAO,UAAU,EAAE,KAAK,EAAE,SAAS,IAAI,QAAQ,CAAC;AAEpD;AACF;AAEA,IAAO,0CAAQ;",
-  "names": []
-}

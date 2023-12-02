@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/routes/zero-shot-wisdom.route.ts"],
+  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { ask } from \"../controllers/zero-shot-wisdom.controller.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\n\r\nconst zeroShotWisdomRouter = express.Router();\r\n\r\nzeroShotWisdomRouter.use(\"/\", limiter, catchErrors(ask));\r\n\r\nexport default zeroShotWisdomRouter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,qCAAoB;AACpB,yCAAoB;AACpB,qCAAwB;AAExB,MAAM,uBAAuB,eAAAA,QAAQ,OAAO;AAE5C,qBAAqB,IAAI,KAAK,+BAAAC,aAAS,+BAAAC,SAAY,sCAAG,CAAC;AAEvD,IAAO,iCAAQ;",
+  "names": ["express", "limiter", "catchErrors"]
+}

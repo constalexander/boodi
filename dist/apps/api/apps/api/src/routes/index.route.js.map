@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../../apps/api/src/routes/index.route.ts"],
-  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { indexController } from \"../controllers/index.controller.js\";\r\n\r\nconst indexRouter = express.Router();\r\n\r\nindexRouter.get(\"/\", limiter, indexController);\r\n\r\nexport default indexRouter;\r\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,qCAAoB;AACpB,8BAAgC;AAEhC,MAAM,cAAc,eAAAA,QAAQ,OAAO;AAEnC,YAAY,IAAI,KAAK,+BAAAC,SAAS,uCAAe;AAE7C,IAAO,sBAAQ;",
-  "names": ["express", "limiter"]
-}

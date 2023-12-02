@@ -1,7 +1,6 @@
 {
   "name": "boodi",
   "version": "0.0.0",
-  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "concurrently dev:fe dev:api",
