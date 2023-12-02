@@ -10,13 +10,13 @@ class URLService {
 
   get BASE() {
     return import.meta.env.PROD
-      ? 'https://boodi-be-4611caadff9d.herokuapp.com'
+      ? 'https://boodi-api-eb451661b30b.herokuapp.com'
       : 'http://localhost:3000';
   }
 
   get BASE_WSS() {
     return import.meta.env.PROD
-      ? 'wss://boodi-be-4611caadff9d.herokuapp.com'
+      ? 'wss://boodi-api-eb451661b30b.herokuapp.com'
       : 'ws://localhost:3000';
   }
 
