@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES6",
-    "module": "NodeNext",
+    "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,

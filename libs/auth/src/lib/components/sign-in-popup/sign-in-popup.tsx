@@ -26,6 +26,7 @@ export function SignInPopup(props: SignInPopupProps) {
   }, []);
 
   const signInWithEmail = async () => {
+    //
     props.closePopup();
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
