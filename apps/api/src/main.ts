@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import { Request, Response } from 'express';
-//import { tinyws } from 'tinyws';
 import ws from 'ws';
 import config from './configs/app.config.js';
 import indexRouter from './routes/index.route.js';
@@ -12,30 +11,16 @@ import zeroShotWisdomRouter from './routes/zero-shot-wisdom.route.js';
 import ttsRouter from './routes/tts.route.js';
 import experimentRouter from './routes/experiment.route.js';
 import globalErrorHandler from './middlewares/global-error-handler.middleware.js';
+import { tinyws } from './middlewares/tinyws.middleware.js';
 import { loadPromptsIntoConfig } from './services/supabase.service.js';
 
-const tinywsPromise = import('tinyws');
-tinywsPromise.then((module) => {
-  // You have now access to 'tinyws' after it's imported
-  const { tinyws } = module;
 
-  // Use 'tinyws' here
-  app.use(tinyws());
-});
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Express {
-    export interface Request {
-      ws: () => Promise<ws>;
-    }
-  }
-}
 
 const app = express();
 
+
 app.set('trust proxy', 'loopback');
-//app.use(tinyws());
 app.use(
   cors({
     origin: config.app.allowedOrigins,
@@ -70,6 +55,8 @@ app.use(globalErrorHandler);
 const startServer = async () => {
   try {
     await loadPromptsIntoConfig();
+    
+    app.use(tinyws());
     const port = config.app.port;
     app.listen(port, () => {
       console.log(`⚡️ [server]: Server is listening on ${port}`);

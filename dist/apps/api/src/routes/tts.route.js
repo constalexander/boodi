@@ -32,10 +32,12 @@ __export(tts_route_exports, {
 });
 module.exports = __toCommonJS(tts_route_exports);
 var import_express = __toESM(require("express"));
-var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"));
 var import_tts_controller = require("../controllers/tts.controller.js");
+var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"));
 var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"));
+var import_tinyws_middleware = require("../middlewares/tinyws.middleware.js");
 const ttsRouter = import_express.default.Router();
 ttsRouter.get("/", import_rate_limiter_middleware.default, (0, import_catch_errors_middleware.default)(import_tts_controller.tts));
+ttsRouter.get("/ws", import_rate_limiter_middleware.default, (0, import_tinyws_middleware.tinyws)(), (0, import_catch_errors_middleware.default)(import_tts_controller.tts));
 var tts_route_default = ttsRouter;
 //# sourceMappingURL=tts.route.js.map

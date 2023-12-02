@@ -1,6 +1,6 @@
 import express from "express";
-import limiter from "../middlewares/rate-limiter.middleware.js";
 import { indexController } from "../controllers/index.controller.js";
+import limiter from "../middlewares/rate-limiter.middleware.js";
 
 const indexRouter = express.Router();
 
