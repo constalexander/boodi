@@ -3,13 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently dev:fe dev:api",
-    "dev:fe": "nx serve",
-    "dev:api": "concurrently npm:dev:api*",
-    "dev:api-js": "npx tsc -w",
-    "dev:api-ts": "nodemon dist/index.js",
-    "start:api": "node dist/index.js",
-    "build:fe": "nx build",
+    "start": "npx concurrently \"npx nx serve boodi\" \"npx nx serve api\"",
+    "start:api": "node dist/apps/main.js",
     "test:spec": "nx test",
     "test:e2e": "nx e2e e2e --watch --browser=chrome",
     "test:e2e-headless": "nx e2e e2e"
