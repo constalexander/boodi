@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/models/app-config.type.ts"],
+  "sourcesContent": ["export interface Config {\r\n  app: {\r\n    env: string;\r\n    port: number;\r\n    allowedOrigins: string[];\r\n  };\r\n  supabase: {\r\n    url: string;\r\n    anonKey: string;\r\n    serviceRoleKey: string;\r\n  };\r\n  openai: {\r\n    key: string;\r\n    model: \"gpt-3.5-turbo\" | \"gpt-4\" | \"gpt-4-1106-preview\";\r\n  };\r\n  prompts: {\r\n    [key: string]: string;\r\n  };\r\n}\r\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

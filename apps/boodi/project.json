@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/boodi",
+        "outputPath": "dist/apps/boodi",
         "postcssConfig": "apps/boodi/postcss.config.js"
       },
       "configurations": {
