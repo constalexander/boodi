@@ -31,7 +31,7 @@ __export(rate_limiter_middleware_exports, {
   default: () => rate_limiter_middleware_default
 });
 module.exports = __toCommonJS(rate_limiter_middleware_exports);
-var import_express_rate_limit = __toESM(require("express-rate-limit"));
+var import_express_rate_limit = __toESM(require("express-rate-limit"), 1);
 const limiter = (0, import_express_rate_limit.default)({
   windowMs: 30 * 1e3,
   max: 5,

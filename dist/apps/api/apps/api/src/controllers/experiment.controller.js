@@ -32,7 +32,7 @@ __export(experiment_controller_exports, {
 });
 module.exports = __toCommonJS(experiment_controller_exports);
 var import_openai_service = require("./../services/openai.service.js");
-var import_app_config = __toESM(require("./../configs/app.config.js"));
+var import_app_config = __toESM(require("./../configs/app.config.js"), 1);
 const experiment1 = async (req, res) => {
   const completion = await import_openai_service.ai.chat.completions.create({
     model: import_app_config.default.openai.model,

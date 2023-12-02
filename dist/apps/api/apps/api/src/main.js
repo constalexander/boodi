@@ -21,22 +21,25 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
-var import_express = __toESM(require("express"));
-var import_cors = __toESM(require("cors"));
-var import_tinyws = require("tinyws");
-var import_app_config = __toESM(require("./configs/app.config.js"));
-var import_index_route = __toESM(require("./routes/index.route.js"));
-var import_health_check_route = __toESM(require("./routes/health-check.route.js"));
-var import_four_noble_truths_route = __toESM(require("./routes/four-noble-truths.route.js"));
-var import_eightfold_path_route = __toESM(require("./routes/eightfold-path.route.js"));
-var import_zero_shot_wisdom_route = __toESM(require("./routes/zero-shot-wisdom.route.js"));
-var import_tts_route = __toESM(require("./routes/tts.route.js"));
-var import_experiment_route = __toESM(require("./routes/experiment.route.js"));
-var import_global_error_handler_middleware = __toESM(require("./middlewares/global-error-handler.middleware.js"));
+var import_express = __toESM(require("express"), 1);
+var import_cors = __toESM(require("cors"), 1);
+var import_app_config = __toESM(require("./configs/app.config.js"), 1);
+var import_index_route = __toESM(require("./routes/index.route.js"), 1);
+var import_health_check_route = __toESM(require("./routes/health-check.route.js"), 1);
+var import_four_noble_truths_route = __toESM(require("./routes/four-noble-truths.route.js"), 1);
+var import_eightfold_path_route = __toESM(require("./routes/eightfold-path.route.js"), 1);
+var import_zero_shot_wisdom_route = __toESM(require("./routes/zero-shot-wisdom.route.js"), 1);
+var import_tts_route = __toESM(require("./routes/tts.route.js"), 1);
+var import_experiment_route = __toESM(require("./routes/experiment.route.js"), 1);
+var import_global_error_handler_middleware = __toESM(require("./middlewares/global-error-handler.middleware.js"), 1);
 var import_supabase_service = require("./services/supabase.service.js");
+const tinywsPromise = import("tinyws");
+tinywsPromise.then((module2) => {
+  const { tinyws } = module2;
+  app.use(tinyws());
+});
 const app = (0, import_express.default)();
 app.set("trust proxy", "loopback");
-app.use((0, import_tinyws.tinyws)());
 app.use(
   (0, import_cors.default)({
     origin: import_app_config.default.app.allowedOrigins,

@@ -31,8 +31,8 @@ __export(index_route_exports, {
   default: () => index_route_default
 });
 module.exports = __toCommonJS(index_route_exports);
-var import_express = __toESM(require("express"));
-var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"));
+var import_express = __toESM(require("express"), 1);
+var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"), 1);
 var import_index_controller = require("../controllers/index.controller.js");
 const indexRouter = import_express.default.Router();
 indexRouter.get("/", import_rate_limiter_middleware.default, import_index_controller.indexController);

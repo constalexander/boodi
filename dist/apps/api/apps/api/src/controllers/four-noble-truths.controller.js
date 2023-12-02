@@ -31,7 +31,7 @@ __export(four_noble_truths_controller_exports, {
   ask: () => ask
 });
 module.exports = __toCommonJS(four_noble_truths_controller_exports);
-var import_app_config = __toESM(require("../configs/app.config.js"));
+var import_app_config = __toESM(require("../configs/app.config.js"), 1);
 var import_openai_service = require("../services/openai.service.js");
 var import_supabase_service = require("../services/supabase.service.js");
 const ask = async (req, res, next) => {

@@ -31,8 +31,8 @@ __export(tts_controller_exports, {
   tts: () => tts
 });
 module.exports = __toCommonJS(tts_controller_exports);
-var import_fs = __toESM(require("fs"));
-var import_path = __toESM(require("path"));
+var import_fs = __toESM(require("fs"), 1);
+var import_path = __toESM(require("path"), 1);
 var import_openai_service = require("../services/openai.service.js");
 const tts = async (req, res, next) => {
   const speechFile = import_path.default.resolve("./speech.mp3");

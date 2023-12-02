@@ -31,9 +31,9 @@ __export(eightfold_path_route_exports, {
   default: () => eightfold_path_route_default
 });
 module.exports = __toCommonJS(eightfold_path_route_exports);
-var import_express = __toESM(require("express"));
+var import_express = __toESM(require("express"), 1);
 var import_eightfold_path_controller = require("../controllers/eightfold-path.controller.js");
-var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"));
+var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"), 1);
 const eightfoldPathRouter = import_express.default.Router();
 eightfoldPathRouter.use("/full", (0, import_catch_errors_middleware.default)(import_eightfold_path_controller.askFull));
 var eightfold_path_route_default = eightfoldPathRouter;

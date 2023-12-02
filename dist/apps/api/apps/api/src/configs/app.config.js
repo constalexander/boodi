@@ -31,7 +31,7 @@ __export(app_config_exports, {
   default: () => app_config_default
 });
 module.exports = __toCommonJS(app_config_exports);
-var import_dotenv = __toESM(require("dotenv"));
+var import_dotenv = __toESM(require("dotenv"), 1);
 import_dotenv.default.config();
 const env = process.env;
 const config = {

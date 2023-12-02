@@ -31,8 +31,8 @@ __export(experiment_route_exports, {
   default: () => experiment_route_default
 });
 module.exports = __toCommonJS(experiment_route_exports);
-var import_express = __toESM(require("express"));
-var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"));
+var import_express = __toESM(require("express"), 1);
+var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"), 1);
 var import_experiment_controller = require("../controllers/experiment.controller.js");
 const experimentRouter = import_express.default.Router();
 experimentRouter.get("/1", import_rate_limiter_middleware.default, import_experiment_controller.experiment1);

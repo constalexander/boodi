@@ -35,7 +35,7 @@ __export(supabase_service_exports, {
 });
 module.exports = __toCommonJS(supabase_service_exports);
 var import_supabase_js = require("@supabase/supabase-js");
-var import_app_config = __toESM(require("../configs/app.config.js"));
+var import_app_config = __toESM(require("../configs/app.config.js"), 1);
 const supabase = (0, import_supabase_js.createClient)(
   import_app_config.default.supabase.url,
   import_app_config.default.supabase.serviceRoleKey

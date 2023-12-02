@@ -34,8 +34,8 @@ __export(openai_service_exports, {
   getStreamingCompletion: () => getStreamingCompletion
 });
 module.exports = __toCommonJS(openai_service_exports);
-var import_openai = __toESM(require("openai"));
-var import_app_config = __toESM(require("../configs/app.config.js"));
+var import_openai = __toESM(require("openai"), 1);
+var import_app_config = __toESM(require("../configs/app.config.js"), 1);
 const ai = new import_openai.default({
   apiKey: import_app_config.default.openai.key
 });

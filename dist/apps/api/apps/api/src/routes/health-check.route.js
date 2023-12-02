@@ -31,8 +31,8 @@ __export(health_check_route_exports, {
   default: () => health_check_route_default
 });
 module.exports = __toCommonJS(health_check_route_exports);
-var import_express = __toESM(require("express"));
-var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"));
+var import_express = __toESM(require("express"), 1);
+var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limiter.middleware.js"), 1);
 var import_health_check_controller = require("../controllers/health-check.controller.js");
 const healthCheckRouter = import_express.default.Router();
 healthCheckRouter.get("/", import_rate_limiter_middleware.default, import_health_check_controller.check);

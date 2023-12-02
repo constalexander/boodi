@@ -31,9 +31,9 @@ __export(four_noble_truths_route_exports, {
   default: () => four_noble_truths_route_default
 });
 module.exports = __toCommonJS(four_noble_truths_route_exports);
-var import_express = __toESM(require("express"));
+var import_express = __toESM(require("express"), 1);
 var import_four_noble_truths_controller = require("../controllers/four-noble-truths.controller.js");
-var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"));
+var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"), 1);
 const fourNobleTruthsRouter = import_express.default.Router();
 fourNobleTruthsRouter.use("/", (0, import_catch_errors_middleware.default)(import_four_noble_truths_controller.ask));
 var four_noble_truths_route_default = fourNobleTruthsRouter;
