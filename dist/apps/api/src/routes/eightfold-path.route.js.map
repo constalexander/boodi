@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../../../apps/api/src/routes/eightfold-path.route.ts"],
-  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { askFull } from \"../controllers/eightfold-path.controller.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\n\r\nconst eightfoldPathRouter = express.Router();\r\n\r\neightfoldPathRouter.use(\"/full\", catchErrors(askFull));\r\n\r\nexport default eightfoldPathRouter;\r\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AAEpB,uCAAwB;AACxB,qCAAwB;AAExB,MAAM,sBAAsB,eAAAA,QAAQ,OAAO;AAE3C,oBAAoB,IAAI,aAAS,+BAAAC,SAAY,wCAAO,CAAC;AAErD,IAAO,+BAAQ;",
-  "names": ["express", "catchErrors"]
+  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\r\nimport { askFull } from \"../controllers/eightfold-path.controller.js\";\r\n\r\nconst eightfoldPathRouter = express.Router();\r\n\r\neightfoldPathRouter.use(\"/full\", limiter, tinyws(), catchErrors(askFull));\r\n\r\nexport default eightfoldPathRouter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,qCAAoB;AACpB,qCAAwB;AACxB,+BAAuB;AACvB,uCAAwB;AAExB,MAAM,sBAAsB,eAAAA,QAAQ,OAAO;AAE3C,oBAAoB,IAAI,SAAS,+BAAAC,aAAS,iCAAO,OAAG,+BAAAC,SAAY,wCAAO,CAAC;AAExE,IAAO,+BAAQ;",
+  "names": ["express", "limiter", "catchErrors"]
 }

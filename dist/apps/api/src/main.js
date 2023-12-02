@@ -32,12 +32,8 @@ var import_zero_shot_wisdom_route = __toESM(require("./routes/zero-shot-wisdom.r
 var import_tts_route = __toESM(require("./routes/tts.route.js"));
 var import_experiment_route = __toESM(require("./routes/experiment.route.js"));
 var import_global_error_handler_middleware = __toESM(require("./middlewares/global-error-handler.middleware.js"));
+var import_tinyws_middleware = require("./middlewares/tinyws.middleware.js");
 var import_supabase_service = require("./services/supabase.service.js");
-const tinywsPromise = import("tinyws");
-tinywsPromise.then((module2) => {
-  const { tinyws } = module2;
-  app.use(tinyws());
-});
 const app = (0, import_express.default)();
 app.set("trust proxy", "loopback");
 app.use(
@@ -64,6 +60,7 @@ app.use(import_global_error_handler_middleware.default);
 const startServer = async () => {
   try {
     await (0, import_supabase_service.loadPromptsIntoConfig)();
+    app.use((0, import_tinyws_middleware.tinyws)());
     const port = import_app_config.default.app.port;
     app.listen(port, () => {
       console.log(`\u26A1\uFE0F [server]: Server is listening on ${port}`);

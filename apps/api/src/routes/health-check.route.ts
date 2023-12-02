@@ -1,6 +1,6 @@
 import express from "express";
-import limiter from "../middlewares/rate-limiter.middleware.js";
 import { check } from "../controllers/health-check.controller.js";
+import limiter from "../middlewares/rate-limiter.middleware.js";
 
 const healthCheckRouter = express.Router();
 
