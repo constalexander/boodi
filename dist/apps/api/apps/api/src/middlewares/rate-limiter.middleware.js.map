@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../../apps/api/src/middlewares/rate-limiter.middleware.ts"],
+  "sourcesContent": ["import rateLimit from \"express-rate-limit\";\r\n\r\nconst limiter = rateLimit({\r\n  windowMs: 30 * 1000,\r\n  max: 5,\r\n  message: \"Too many requests, please try again after 30 seconds.\",\r\n});\r\n\r\nexport default limiter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,gCAAsB;AAEtB,MAAM,cAAU,0BAAAA,SAAU;AAAA,EACxB,UAAU,KAAK;AAAA,EACf,KAAK;AAAA,EACL,SAAS;AACX,CAAC;AAED,IAAO,kCAAQ;",
+  "names": ["rateLimit"]
+}

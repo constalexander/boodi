@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "dependencies": {
+    "@supabase/supabase-js": "2.38.4",
+    "cors": "2.8.5",
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "express-rate-limit": "7.1.2",
+    "openai": "4.12.4",
+    "tinyws": "0.1.0",
+    "ws": "8.14.2"
+  },
+  "main": "./main.js",
+  "type": "commonjs"
+}

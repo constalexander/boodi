@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../../apps/api/src/routes/four-noble-truths.route.ts"],
+  "sourcesContent": ["import express from \"express\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport { ask } from \"../controllers/four-noble-truths.controller.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\n\r\nconst fourNobleTruthsRouter = express.Router();\r\n\r\nfourNobleTruthsRouter.use(\"/\", catchErrors(ask));\r\n\r\nexport default fourNobleTruthsRouter;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AAEpB,0CAAoB;AACpB,qCAAwB;AAExB,MAAM,wBAAwB,eAAAA,QAAQ,OAAO;AAE7C,sBAAsB,IAAI,SAAK,+BAAAC,SAAY,uCAAG,CAAC;AAE/C,IAAO,kCAAQ;",
+  "names": ["express", "catchErrors"]
+}
