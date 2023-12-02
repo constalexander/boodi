@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npx concurrently \"npx nx serve boodi\" \"npx nx serve api\"",
-    "start:api": "node dist/apps/main.js",
+    "dev": "npx concurrently \"npx nx serve boodi\" \"npx nx serve api\"",
+    "start:api": "node dist/apps/api/src/main.js",
     "test:spec": "nx test",
     "test:e2e": "nx e2e e2e --watch --browser=chrome",
     "test:e2e-headless": "nx e2e e2e"
