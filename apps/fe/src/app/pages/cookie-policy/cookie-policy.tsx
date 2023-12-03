@@ -6,8 +6,8 @@ export interface CookiePolicyProps {}
 export function CookiePolicy(props: CookiePolicyProps) {
   return (
     <div className={'p-5 max-w-[800px] px-[60px] mx-auto'}>
-    <h1>Cookie Policy</h1>
-  </div>
+      <h1>Cookie Policy</h1>
+    </div>
   );
 }
 
