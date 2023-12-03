@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../../../apps/api/src/routes/tts.route.ts"],
-  "sourcesContent": ["import express from \"express\";\r\nimport { tts } from \"../controllers/tts.controller.js\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\r\n\r\nconst ttsRouter = express.Router();\r\n\r\nttsRouter.get(\"/\", limiter, catchErrors(tts));\r\nttsRouter.get(\"/ws\", limiter, tinyws(), catchErrors(tts));\r\n\r\nexport default ttsRouter;\r\n"],
+  "sourcesContent": ["import express from \"express\";\nimport { tts } from \"../controllers/tts.controller.js\";\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\n\nconst ttsRouter = express.Router();\n\nttsRouter.get(\"/\", limiter, catchErrors(tts));\nttsRouter.get(\"/ws\", limiter, tinyws(), catchErrors(tts));\n\nexport default ttsRouter;\n"],
   "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,4BAAoB;AACpB,qCAAoB;AACpB,qCAAwB;AACxB,+BAAuB;AAEvB,MAAM,YAAY,eAAAA,QAAQ,OAAO;AAEjC,UAAU,IAAI,KAAK,+BAAAC,aAAS,+BAAAC,SAAY,yBAAG,CAAC;AAC5C,UAAU,IAAI,OAAO,+BAAAD,aAAS,iCAAO,OAAG,+BAAAC,SAAY,yBAAG,CAAC;AAExD,IAAO,oBAAQ;",
   "names": ["express", "limiter", "catchErrors"]
 }

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../../../apps/api/src/routes/zero-shot-wisdom.route.ts"],
-  "sourcesContent": ["import express from \"express\";\r\nimport { ask } from \"../controllers/zero-shot-wisdom.controller.js\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\r\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\r\n\r\nconst zeroShotWisdomRouter = express.Router();\r\n\r\nzeroShotWisdomRouter.use(\"/\", limiter, tinyws(), catchErrors(ask));\r\n\r\nexport default zeroShotWisdomRouter;\r\n"],
+  "sourcesContent": ["import express from \"express\";\nimport { ask } from \"../controllers/zero-shot-wisdom.controller.js\";\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\n\nconst zeroShotWisdomRouter = express.Router();\n\nzeroShotWisdomRouter.use(\"/\", limiter, tinyws(), catchErrors(ask));\n\nexport default zeroShotWisdomRouter;\n"],
   "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,yCAAoB;AACpB,qCAAoB;AACpB,qCAAwB;AACxB,+BAAuB;AAEvB,MAAM,uBAAuB,eAAAA,QAAQ,OAAO;AAE5C,qBAAqB,IAAI,KAAK,+BAAAC,aAAS,iCAAO,OAAG,+BAAAC,SAAY,sCAAG,CAAC;AAEjE,IAAO,iCAAQ;",
   "names": ["express", "limiter", "catchErrors"]
 }
