@@ -5,8 +5,8 @@ export interface TermsOfUseProps {}
 
 export function TermsOfUse(props: TermsOfUseProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to TermsOfUse!</h1>
+    <div className={'p-5 max-w-[800px] px-[60px] mx-auto'}>
+      <h1>Terms of Use</h1>
     </div>
   );
 }

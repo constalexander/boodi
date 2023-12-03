@@ -7,6 +7,7 @@ import { supabase } from '@boodi/auth';
 import { Input } from '@boodi/ui/input';
 import useURLService from '@boodi/hooks/url.hook';
 import styles from './whats-on-your-mind.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface WhatsOnYourMindProps {}
@@ -20,6 +21,7 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
   const webSocketRef = useRef<WebSocket | null>(null);
 
   const initVh = window.innerHeight;
+  const navigate = useNavigate();
 
   const go = async () => {
     if (isButtonDisabled) return;
@@ -111,15 +113,15 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
       </div>
 
       <div className="bottom my-[40px]">
-        <a
-          href="Privacy Policy.pdf"
-          target="_blank"
-          rel="noreferrer"
+        <button
           className="text-white text-xs"
-          onClick={() => trackEventName(gsEventName.privacyPolicy_1)}
+          onClick={() => {
+            trackEventName(gsEventName.privacyPolicy_1);
+            navigate('/privacy');
+          }}
         >
           Privacy Policy
-        </a>
+        </button>
       </div>
     </div>
   );

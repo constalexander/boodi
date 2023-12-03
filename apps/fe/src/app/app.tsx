@@ -18,14 +18,14 @@ export function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie" element={<CookiePolicy />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route
               path="/release-your-worries"
               element={<ReleaseYourWorries />}
             />
             <Route path="/sandbox" element={<Sandbox />} />
-            <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/terms" element={<TermsOfUse />} />
             <Route path="/whats-on-your-mind" element={<WhatsOnYourMind />} />
             <Route path="/xoxo" element={<Xoxo />} />
             <Route path="*" element={<NotFound404 />} />
