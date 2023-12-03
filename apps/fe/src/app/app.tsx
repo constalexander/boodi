@@ -7,6 +7,9 @@ import WhatsOnYourMind from './pages/whats-on-your-mind/whats-on-your-mind';
 import Sandbox from './pages/sandbox/sandbox';
 import ReleaseYourWorries from './pages/release-your-worries/release-your-worries';
 import Home from './pages/home/home';
+import CookiePolicy from './pages/cookie-policy/cookie-policy';
+import PrivacyPolicy from './pages/privacy-policy/privacy-policy';
+import TermsOfUse from './pages/terms-of-use/terms-of-use';
 
 export function App() {
   return (
@@ -15,13 +18,16 @@ export function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/cookie" element={<CookiePolicy />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route
               path="/release-your-worries"
               element={<ReleaseYourWorries />}
             />
+            <Route path="/sandbox" element={<Sandbox />} />
+            <Route path="/terms" element={<TermsOfUse />} />
             <Route path="/whats-on-your-mind" element={<WhatsOnYourMind />} />
             <Route path="/xoxo" element={<Xoxo />} />
-            <Route path="/sandbox" element={<Sandbox />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
         </Router>
