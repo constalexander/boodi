@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
-import { supabase } from '@boodi/auth';
 import { gsEventName, trackEventName } from '@boodi/analytics';
 import { SignInPopup } from '@boodi/auth';
 import useURLService from '@boodi/hooks/url.hook';
+import useSupabaseService from '@boodi/hooks/supabase.hook';
 import styles from './chat.module.scss';
 
 /* eslint-disable-next-line */
@@ -11,6 +11,7 @@ export interface ChatProps {}
 
 export function Chat(props: ChatProps) {
   const urlService = useURLService();
+  const supabaseService = useSupabaseService();
 
   const [truthBtnDisabled, setTruthBtnDisabled] = useState(false);
   const [truthBtnText, setTruthBtnText] = useState('Show Me The Truth');
@@ -32,7 +33,7 @@ export function Chat(props: ChatProps) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabaseService.supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session as any);
     });
 
@@ -47,7 +48,7 @@ export function Chat(props: ChatProps) {
       const {
         data: { user },
         error,
-      } = await supabase.auth.getUser();
+      } = await supabaseService.supabase.auth.getUser();
 
       if (error) return;
       setCurrentuser(user);
@@ -56,26 +57,27 @@ export function Chat(props: ChatProps) {
 
   const getSession = async () => {
     const { data: session, error: sessionError } =
-      await supabase.auth.getSession();
+      await supabaseService.supabase.auth.getSession();
     setSession(session);
   };
 
   const signInWithOAuth = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        //redirectTo: 'http://localhost:8888/chat',
-        redirectTo: 'https://boodi.ai',
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent',
+    const { data, error } = await supabaseService.supabase.auth.signInWithOAuth(
+      {
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
         },
-      },
-    });
+      }
+    );
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabaseService.supabase.auth.signOut();
     if (!error) window.location.reload();
   };
 
@@ -84,11 +86,12 @@ export function Chat(props: ChatProps) {
   };
 
   const refreshSession = async () => {
-    const { data, error } = await supabase.auth.refreshSession();
+    const { data, error } =
+      await supabaseService.supabase.auth.refreshSession();
     const { session, user } = data;
 
     // const { data: refreshed, error: refreshError } =
-    //   await supabase.auth.refreshSession();
+    //   await supabaseService.supabase.auth.refreshSession();
   };
 
   const showMeTheTruth = async (fullPath = false) => {
@@ -158,7 +161,7 @@ export function Chat(props: ChatProps) {
     const socket = new WebSocket(url);
 
     const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+      await supabaseService.supabase.auth.getSession();
 
     let userUUID: string | null = '';
     if (sessionData && !sessionError) {
@@ -188,7 +191,7 @@ export function Chat(props: ChatProps) {
     const socket = new WebSocket(url);
 
     const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+      await supabaseService.supabase.auth.getSession();
 
     let userUUID: string | null = '';
     if (sessionData && !sessionError) {
@@ -211,76 +214,10 @@ export function Chat(props: ChatProps) {
     socket.onerror = (err) => {
       console.error('Websocket error:', err);
     };
-
-    // try {
-    //   const response = await fetch(url, {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json, text/plain, */*',
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ suffering }),
-    //   });
-
-    //   if (!response.ok || !response.body) {
-    //     throw new Error(`Request failed with status ${response.status}`);
-    //   }
-
-    //   const reader = response.body.getReader();
-    //   const decoder = new TextDecoder();
-    //   const loopRunner = true;
-
-    //   while (loopRunner) {
-    //     const { value, done } = await reader.read();
-    //     if (done) break;
-    //     const decodedChunk = decoder.decode(value, { stream: true });
-    //     setEightfoldPathFull((eightfoldPath) => eightfoldPath + decodedChunk);
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
   };
 
   return (
     <div className={`${styles['container']}`}>
-      <div className={styles['user-top-bar']}>
-        {/* <img src={session.user_metadata.picture} alt="Profile pic"></img>
-
-          <span className={styles['full-name']}>
-            {currentUser.user_metadata.full_name}
-          </span>
-          <br /> 
-
-          <span className={styles['email']}>
-            {currentUser.user_metadata.email}
-          </span> */}
-        {session && (
-          <button
-            className={`${styles['ghost-btn']} w-[100px] h-[20px] self-end`}
-            onClick={() => {
-              trackEventName(gsEventName.signOut_1);
-              signOut();
-            }}
-          >
-            Sign out
-          </button>
-        )}
-
-        {!session && (
-          <button
-            className={`${styles['ghost-btn']} w-[100px] h-[20px] self-end`}
-            onClick={() => {
-              //signInWithEmail();
-              //signInWithOAuth();
-              trackEventName(gsEventName.signIn_1);
-              toggleSignInPopup();
-            }}
-          >
-            Sign in
-          </button>
-        )}
-      </div>
-
       <h1>
         A Message From: <br />
         Boodi, The Enlightened Guide

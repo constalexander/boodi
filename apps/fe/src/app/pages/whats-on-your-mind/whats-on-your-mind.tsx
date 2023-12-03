@@ -2,11 +2,10 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { MousePointerClick } from 'lucide-react';
-import { Button } from '@boodi/ui/button';
+import { Header, Button, Input, Footer } from '@boodi/ui';
 import { gsEventName, trackEventName } from '@boodi/analytics';
-import { supabase } from '@boodi/auth';
-import { Input } from '@boodi/ui/input';
 import useURLService from '@boodi/hooks/url.hook';
+import useSupabaseService from '@boodi/hooks/supabase.hook';
 import styles from './whats-on-your-mind.module.scss';
 
 /* eslint-disable-next-line */
@@ -14,6 +13,7 @@ export interface WhatsOnYourMindProps {}
 
 export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
   const urlService = useURLService();
+  const supabaseService = useSupabaseService();
 
   const [inputText, setInputText] = useState('');
   const [boodiResponse, setBoodiResponse] = useState('');
@@ -27,7 +27,7 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
     if (isButtonDisabled) return;
 
     const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+      await supabaseService.supabase.auth.getSession();
 
     let userUUID: string | null = '';
     if (sessionData && !sessionError) {
@@ -67,31 +67,32 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
   return (
     <div
       id="WhatsOnYourMindPage"
-      className="w-screen min-h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between"
+      className="w-screen min-h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between bg-gradrad-2"
     >
+      <Header showLogo={false} />
       <div
-        className="top w-full sm:w-[90%] sm:max-w-[500px] md:w-[500px] px-5"
-        style={{ marginTop: `${initVh / 3.25}px` }}
+        className="top w-full sm:w-[90%] sm:max-w-[500px] md:w-[500px] px-5 text-center"
+        style={{ marginTop: `${initVh / 100}px` }}
       >
         <img
           src="boodi-logo.svg"
           alt="Boodi.ai logo"
-          className="w-[90%] max-w-[200px] mx-auto pb-3"
+          className="w-[90%] max-w-[140px] mx-auto pb-3"
         />
-        <h1 className="text-[6vw] sm:text-[1.5rem] text-center text-transparent bg-clip-text w-full mx-auto">
+        <h1 className="inline-block text-[6vw] sm:text-[1.25rem] text-center text-transparent bg-clip-text bg-gradlin-1 scale-y-[1.15] mt-1">
           What's on your mind?
         </h1>
         <div id="InputArea" className="flex flex-col">
           <Input
             type="text"
-            className="flex-1"
+            className="flex-1 mt-3"
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') go();
             }}
           />
           <Button
-            className="mt-3"
+            className="mt-3 "
             onClick={() => {
               trackEventName(gsEventName.whatsOnYourMind_2);
               go();
@@ -111,54 +112,7 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
           ></div>
         </div>
       </div>
-
-      <div className="bottom my-[40px]">
-        <Button
-          variant="ghost"
-          onClick={() => {
-            trackEventName(gsEventName.privacyPolicy_1);
-            navigate('/privacy');
-          }}
-        >
-          Privacy Policy
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            trackEventName(gsEventName.joinCommunity_1);
-            window.open('https://www.facebook.com/groups/exponentialenlightenment', '_blank');
-          }}
-        >
-          Join Community
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            trackEventName(gsEventName.about_1);
-            navigate('/about');
-          }}
-        >
-          About
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            trackEventName(gsEventName.donate_1);
-            window.open('https://paypal.me/djprorok', '_blank');
-          }}
-        >
-          Donate
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            trackEventName(gsEventName.findACoach_1);
-            window.open('https://calendly.com/davidprorok/clarity-session-for-innovators', '_blank');
-          }}
-        >
-          Find a Coach
-        </Button>
-      </div>
+      <Footer />
     </div>
   );
 }

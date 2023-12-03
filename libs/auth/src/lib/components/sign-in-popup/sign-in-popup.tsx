@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { gsEventName, trackEventName } from '@boodi/analytics';
+import useSupabaseService from '@boodi/hooks/supabase.hook';
 import styles from './sign-in-popup.module.scss';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 /* eslint-disable-next-line */
 export interface SignInPopupProps {
@@ -18,6 +13,7 @@ export function SignInPopup(props: SignInPopupProps) {
   const [isVisiblePopup, setIsVisiblePopup] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const supabaseService = useSupabaseService();
 
   useEffect(() => {
     return () => {
@@ -28,16 +24,17 @@ export function SignInPopup(props: SignInPopupProps) {
   const signInWithEmail = async () => {
     //
     props.closePopup();
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
+    const { data, error } =
+      await supabaseService.supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
   };
 
   const signUpWithEmail = async () => {
     props.closePopup();
     props.isSignUp();
-    await supabase.auth.signUp({ email, password });
+    await supabaseService.supabase.auth.signUp({ email, password });
   };
 
   return (
@@ -98,5 +95,4 @@ export function SignInPopup(props: SignInPopupProps) {
   );
 }
 
-export { supabase };
 export default SignInPopup;

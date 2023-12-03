@@ -2,20 +2,36 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from './utils';
+import { cn } from '../utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300',
+  `inline-flex 
+  items-center 
+  justify-center 
+  rounded-md 
+  text-sm 
+  text-white
+  font-medium 
+  ring-offset-white 
+  transition-colors 
+  focus-visible:outline-none 
+  focus-visible:ring-2 
+  focus-visible:ring-slate-900 
+  focus-visible:ring-offset-2 
+  disabled:pointer-events-none 
+  disabled:opacity-50 
+  dark:ring-offset-slate-900 
+  dark:focus-visible:ring-slate-700`,
   {
     variants: {
       variant: {
         default: `
-          bg-pink 
+          bg-white 
           text-black
-          hover:bg-blueIce 
-          dark:bg-blueIce
+          hover:bg-slate-100 
+          dark:bg-blueIce-500
           dark:text-black 
-          dark:hover:bg-blueIce`,
+          dark:hover:bg-blueIce-700`,
         destructive: `
           bg-red-500 
           text-slate-50 
@@ -26,11 +42,11 @@ const buttonVariants = cva(
         outline: `
           border 
           border-slate-200 
-          bg-white 
+          bg-white
           hover:bg-slate-100 
           hover:text-slate-900 
-          dark:border-slate-800 
-          dark:bg-slate-950 
+          dark:border-blueIce-500
+          dark:bg-slate-900 
           dark:hover:bg-slate-800 
           dark:hover:text-slate-50`,
         secondary: `
