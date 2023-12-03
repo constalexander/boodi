@@ -28,7 +28,7 @@ A meditation-like app with different “buddha” personalities. You can get AI-
 
 ## Start the app
 
-To start the development server run `nx serve boodi`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+To start the development server run `nx serve fe`. Open your browser and navigate to http://localhost:4200/. Happy coding!
 
 ## Generate code
 
