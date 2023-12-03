@@ -1,5 +1,11 @@
+declare global {
+  interface Window {
+    _gs: (action: string, eventName: string) => void;
+  }
+}
+
 export const trackEventName = (eventName: string) => {
-  (window as any)._gs('event', eventName);
+  window._gs('event', eventName);
 };
 
 export enum gsEventName {
