@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../apps/api/src/controllers/index.controller.ts"],
-  "sourcesContent": ["import { Request, Response } from \"express\";\r\nimport path from \"path\";\r\n\r\nexport const indexController = (req: Request, res: Response) => {\r\n  // const indexPath = path.join(__dirname, \"public\", \"index.html\");\r\n  // res.sendFile(indexPath);\r\n};\r\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAGO,MAAM,kBAAkB,CAAC,KAAc,QAAkB;AAGhE;",
-  "names": []
-}
