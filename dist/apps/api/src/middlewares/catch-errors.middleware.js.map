@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/middlewares/catch-errors.middleware.ts"],
+  "sourcesContent": ["import { NextFunction, Request, Response } from \"express\";\r\n\r\n// Higher order function\r\n// to avoid using try-catch blocks\r\nconst catchErrors =\r\n  (fn: any) => (req: Request, res: Response, next: NextFunction) => {\r\n    return fn(req, res, next).catch(next);\r\n  };\r\n\r\nexport default catchErrors;\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAIA,MAAM,cACJ,CAAC,OAAY,CAAC,KAAc,KAAe,SAAuB;AAChE,SAAO,GAAG,KAAK,KAAK,IAAI,EAAE,MAAM,IAAI;AACtC;AAEF,IAAO,kCAAQ;",
+  "names": []
+}

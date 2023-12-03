@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/controllers/health-check.controller.ts"],
+  "sourcesContent": ["import { Request, Response } from 'express';\r\n\r\nexport const check = async (req: Request, res: Response) => {\r\n  res.json({ status: 'OK', version: '2' });\r\n};\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEO,MAAM,QAAQ,OAAO,KAAc,QAAkB;AAC1D,MAAI,KAAK,EAAE,QAAQ,MAAM,SAAS,IAAI,CAAC;AACzC;",
+  "names": []
+}
