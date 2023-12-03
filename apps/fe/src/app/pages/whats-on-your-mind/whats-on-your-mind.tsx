@@ -68,15 +68,15 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
       className="w-screen min-h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between"
     >
       <div
-        className="top w-[320px] sm:w-[90%] sm:max-w-[500px] md:w-[500px] px-5"
+        className="top w-full sm:w-[90%] sm:max-w-[500px] md:w-[500px] px-5"
         style={{ marginTop: `${initVh / 3.25}px` }}
       >
         <img
           src="boodi-logo.svg"
           alt="Boodi.ai logo"
-          className="w-[200px] mx-auto pb-3"
+          className="w-[90%] max-w-[200px] mx-auto pb-3"
         />
-        <h1 className="text-transparent bg-clip-text w-[284px] mx-auto">
+        <h1 className="text-[6vw] sm:text-[1.5rem] text-center text-transparent bg-clip-text w-full mx-auto">
           What's on your mind?
         </h1>
         <div id="InputArea" className="flex flex-col">
