@@ -8,15 +8,15 @@
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "e2e/cypress.config.ts",
-        "devServerTarget": "boodi:serve:development",
+        "devServerTarget": "fe:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "boodi:serve:production"
+          "devServerTarget": "fe:serve:production"
         },
         "ci": {
-          "devServerTarget": "boodi:serve-static"
+          "devServerTarget": "fe:serve-static"
         }
       }
     },
@@ -29,5 +29,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["boodi"]
+  "implicitDependencies": ["fe"]
 }

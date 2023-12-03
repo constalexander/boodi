@@ -1,7 +1,7 @@
 {
-  "name": "boodi",
+  "name": "fe",
   "$schema": "node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/boodi/src",
+  "sourceRoot": "apps/fe/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,8 +9,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/boodi",
-        "postcssConfig": "apps/boodi/postcss.config.js"
+        "outputPath": "dist/apps/fe",
+        "postcssConfig": "apps/fe/postcss.config.js"
       },
       "configurations": {
         "development": {
@@ -25,17 +25,17 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "boodi:build",
+        "buildTarget": "fe:build",
         "host": "0.0.0.0",
-        "proxyConfig": "apps/boodi/proxy.conf.json"
+        "proxyConfig": "apps/fe/proxy.conf.json"
       },
       "configurations": {
         "development": {
-          "buildTarget": "boodi:build:development",
+          "buildTarget": "fe:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "boodi:build:production",
+          "buildTarget": "fe:build:production",
           "hmr": false
         }
       }
@@ -44,14 +44,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "boodi:build"
+        "buildTarget": "fe:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "boodi:build:development"
+          "buildTarget": "fe:build:development"
         },
         "production": {
-          "buildTarget": "boodi:build:production"
+          "buildTarget": "fe:build:production"
         }
       }
     },
@@ -60,7 +60,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "coverage/boodi"
+        "reportsDirectory": "coverage/fe"
       }
     },
     "lint": {
@@ -73,7 +73,7 @@
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "boodi:build"
+        "buildTarget": "fe:build"
       }
     }
   },

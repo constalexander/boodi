@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "apps/boodi/src/styles.scss",
+    "css": "apps/fe/src/styles.scss",
     "baseColor": "slate",
     "cssVariables": false
   },
