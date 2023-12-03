@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { MousePointerClick } from 'lucide-react';
 import { Button } from '@boodi/ui/button';
@@ -7,7 +8,6 @@ import { supabase } from '@boodi/auth';
 import { Input } from '@boodi/ui/input';
 import useURLService from '@boodi/hooks/url.hook';
 import styles from './whats-on-your-mind.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface WhatsOnYourMindProps {}
@@ -113,15 +113,15 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
       </div>
 
       <div className="bottom my-[40px]">
-        <button
-          className="text-white text-xs"
+        <Button
+          variant="ghost"
           onClick={() => {
             trackEventName(gsEventName.privacyPolicy_1);
             navigate('/privacy');
           }}
         >
           Privacy Policy
-        </button>
+        </Button>
       </div>
     </div>
   );
