@@ -122,6 +122,42 @@ export function WhatsOnYourMind(props: WhatsOnYourMindProps) {
         >
           Privacy Policy
         </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            trackEventName(gsEventName.joinCommunity_1);
+            window.open('https://www.facebook.com/groups/exponentialenlightenment', '_blank');
+          }}
+        >
+          Join Community
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            trackEventName(gsEventName.about_1);
+            navigate('/about');
+          }}
+        >
+          About
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            trackEventName(gsEventName.donate_1);
+            window.open('https://paypal.me/djprorok', '_blank');
+          }}
+        >
+          Donate
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            trackEventName(gsEventName.findACoach_1);
+            window.open('https://calendly.com/davidprorok/clarity-session-for-innovators', '_blank');
+          }}
+        >
+          Find a Coach
+        </Button>
       </div>
     </div>
   );

@@ -15,4 +15,6 @@ export enum gsEventName {
   showMeTheTruth_1 = 'Show Me The Truth, generate a message',
   gimmeThatBoodi_1 = 'Gimme That Boodi click',
   privacyPolicy_1 = 'Privacy Policy click',
+  joinCommunity_1 = 'Join Community click',
+  about_1 = 'About click',
 }
