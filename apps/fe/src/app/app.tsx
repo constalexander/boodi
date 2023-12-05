@@ -17,8 +17,9 @@ export function App() {
       <URLProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cookie" element={<CookiePolicy />} />
+            <Route path="/" element={<WhatsOnYourMind />} />
+            <Route path="/about" element={<Home />} />
+            <Route path="/chat" element={<WhatsOnYourMind />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route
               path="/release-your-worries"
