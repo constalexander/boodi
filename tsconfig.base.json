@@ -24,7 +24,7 @@
       "@boodi/models/*": ["libs/models/src/*"],
       "@boodi/providers/*": ["libs/providers/src/*"],
       "@boodi/services/*": ["libs/services/src/*"],
-      "@boodi/ui/*": ["libs/ui/src/lib/*"],
+      "@boodi/ui": ["libs/ui/src/index.ts"],
       "@boodi/welcome": ["libs/welcome/src/index.ts"]
     },
     "jsx": "react-jsx"

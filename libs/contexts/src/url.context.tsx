@@ -1,5 +1,5 @@
-import URLService from '@boodi/services/url.service';
 import { createContext } from 'react';
+import URLService from '@boodi/services/url.service';
 
 const UrlServiceContext = createContext<URLService | null>(null);
 

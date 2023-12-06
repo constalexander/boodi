@@ -1,91 +1,124 @@
-@use 'tailwindcss/base';
-@use 'tailwindcss/components';
-@use 'tailwindcss/utilities';
-@use 'app/scss/normalize';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Tilt+Neon&family=Days+One&family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
+    --accent: hsla(210 40% 96.1%);
+    --accent-foreground: hsla(222.2 47.4% 11.2%);
+    --background: hsla(0 0% 100%);
+    --black: hsla(224, 38%, 6%);
+    --blueIce-100: hsla(178, 77%, 96%);
+    --blueIce-200: hsla(178, 77%, 86%);
+    --blueIce-300: hsla(178, 77%, 76%);
+    --blueIce-400: hsla(178, 77%, 66%);
+    --blueIce-500: hsla(178, 77%, 56%);
+    --blueIce-600: hsla(178, 77%, 46%);
+    --blueIce-700: hsla(178, 77%, 36%);
+    --blueIce-800: hsla(178, 77%, 26%);
+    --blueIce-900: hsla(178, 77%, 16%);
+    //--blueOxford: hsla(226, 77%, 14%);
+    --border: hsla(214.3 31.8% 91.4%);
+    --card: hsla(0 0% 100%);
+    --card-foreground: hsla(222.2 47.4% 11.2%);
+    //--darkYellow: hsla(39, 99%, 61%);
+    --destructive: hsla(0 100% 50%);
+    --destructive-foreground: hsla(210 40% 98%);
+    --font-sans: 'Tilt Neon';
+    --foreground: hsla(222.2 47.4% 11.2%);
+    --input: hsla(214.3 31.8% 91.4%);
+    --muted: hsla(210 40% 96.1%);
+    --muted-foreground: hsla(215.4 16.3% 46.9%);
+    //--pink: hsla(322, 97%, 76%);
+    --popover: hsla(0 0% 100%);
+    --popover-foreground: hsla(222.2 47.4% 11.2%);
+    --primary: hsla(222.2 47.4% 11.2%);
+    --primary-foreground: hsla(210 40% 98%);
     --radius: 0.5rem;
+    --ring: hsla(215 20.2% 65.1%);
+    --secondary: hsla(210 40% 96.1%);
+    --secondary-foreground: hsla(222.2 47.4% 11.2%);
+    --white: hsla(180, 57%, 97%);
+
+    // Linear gradients
+    --gradlin-1: linear-gradient(
+      90deg,
+      hsla(328, 77%, 65%) 0%,
+      hsla(245, 70%, 63%) 50%,
+      hsla(178, 77%, 60%) 100%
+    );
+
+    --gradlin-2: linear-gradient(
+      150deg,
+      hsla(246, 66%, 70%) 0%,
+      hsla(320, 90%, 61%) 33%,
+      hsla(28, 91%, 58%) 66%,
+      hsl(39, 99%, 61%) 100%
+    );
+
+    // Radial gradients
+    --gradrad-1: radial-gradient(
+        circle at 0% 0%,
+        hsla(197, 57%, 22%, 0.5) 0%,
+        hsla(199, 61%, 11%, 0.5) 25%,
+        hsla(198, 56%, 4%, 0.5) 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        hsla(303, 69%, 37%, 0.5) 0%,
+        hsla(342, 35%, 20%, 0.5) 25%,
+        hsla(354, 57%, 10%, 0.5) 50%
+      );
+    --gradrad-2: radial-gradient(
+        circle at 0% 0%,
+        hsla(197, 57%, 22%, 0.5) 0%,
+        hsla(199, 61%, 11%, 0.5) 25%,
+        hsla(198, 56%, 4%, 0.5) 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        hsla(303, 69%, 37%, 0.5) 0%,
+        hsla(342, 35%, 20%, 0.5) 25%,
+        hsla(354, 57%, 10%, 0.5) 50%
+      );
+    --gradrad-3: radial-gradient(
+        circle at 0% 0%,
+        hsla(195, 11%, 7%, 0.5) 0%,
+        hsla(199, 45%, 22%, 0.5) 25%,
+        hsla(201, 42%, 42%, 0.5) 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        hsla(263, 77%, 12%, 0.5) 0%,
+        hsla(268, 76%, 13%, 0.5) 25%,
+        hsla(271, 67%, 40%, 0.1) 50%
+      );
   }
 
   .dark {
-    --background: 224, 10%, 14%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 178, 77%, 76%;
-    --input: 178, 77%, 76%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
+    --accent: hsla(216 34% 17%);
+    --accent-foreground: hsla(210 40% 98%);
+    --background: hsla(224, 10%, 14%);
+    --background-transparent: hsla(224, 10%, 14%, 0.9);
+    --border: var(--blueIce-800);
+    --card: hsla(224 71% 4%);
+    --card-foreground: hsla(213 31% 91%);
+    --destructive: hsla(0 63% 31%);
+    --destructive-foreground: hsla(210 40% 98%);
+    --foreground: var(--blueIce-300);
+    --input: var(--blueIce-500);
+    --muted: hsla(223 47% 11%);
+    --muted-foreground: hsla(215.4 16.3% 56.9%);
+    --popover: hsla(224 71% 4%);
+    --popover-foreground: hsla(215 20.2% 65.1%);
+    --primary: hsla(210 40% 98%);
+    --primary-foreground: hsla(222.2 47.4% 1.2%);
+    --secondary: hsla(222.2 47.4% 11.2%);
+    --secondary-foreground: hsla(210 40% 98%);
     --radius: 0.5rem;
-
-    --font-sans: 'Tilt Neon';
-
-    --blueOxford: 226, 77%, 14%;
-    --blueIce: 178, 77%, 76%;
-    --darkYellow: 39, 99%, 61%;
-    --pink: 322, 97%, 76%;
-    --white: 180, 57%, 97%;
-    --black: 224, 38%, 6%;
-
-    --gradient-23190: linear-gradient(
-      90deg,
-      #e44b9c 0%,
-      #564ad7 50%,
-      #19f7eb 100%
-    );
+    --ring: hsla(216 34% 17%);
   }
 
   *,
