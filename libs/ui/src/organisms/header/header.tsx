@@ -34,10 +34,7 @@ export function Header(props: HeaderProps) {
     const getSession = async () => {
       const { data: session, error: sessionError } =
         await supabaseService.supabase.auth.getSession();
-      if (sessionError) {
-        console.error(sessionError);
-      } else {
-        console.log('session', session);
+      if (!sessionError) {
         setSession(session.session);
       }
     };
