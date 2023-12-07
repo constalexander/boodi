@@ -1,7 +1,9 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import { AlignJustify } from 'lucide-react';
+import { AppStoreContext } from '@boodi/contexts/app-store.context';
 import {
   Button,
   Dialog,
@@ -21,7 +23,8 @@ export interface HeaderProps {
   showLogo?: boolean;
 }
 
-export function Header(props: HeaderProps) {
+export const Header = observer((props: HeaderProps) => {
+  const appStore = useContext(AppStoreContext);
   const supabaseService = useSupabaseService();
 
   const { showLogo = true } = props;
@@ -145,6 +148,6 @@ export function Header(props: HeaderProps) {
       </div>
     </div>
   );
-}
+});
 
 export default Header;

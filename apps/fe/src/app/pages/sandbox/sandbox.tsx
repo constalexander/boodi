@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+import { observer } from 'mobx-react';
+import { AppStoreContext } from '@boodi/contexts/app-store.context';
 import { Header } from '@boodi/ui';
 
 /* eslint-disable-next-line */
 export interface SandboxProps {}
 
-export function Sandbox(props: SandboxProps) {
+export const Sandbox = observer((props: SandboxProps) => {
+  const appStore = useContext(AppStoreContext);
   return (
     <div>
       <Header />
@@ -11,6 +15,6 @@ export function Sandbox(props: SandboxProps) {
       <p>I hope you have fun!</p>
     </div>
   );
-}
+});
 
 export default Sandbox;

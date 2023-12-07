@@ -1,5 +1,7 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { Provider } from 'mobx-react';
+import { appStore } from '@boodi/stores/app.store';
 import App from './app/app';
 
 const root = ReactDOM.createRoot(
@@ -7,6 +9,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <App />
+    <Provider appStore={appStore}>
+      <App />
+    </Provider>
   </StrictMode>
 );
