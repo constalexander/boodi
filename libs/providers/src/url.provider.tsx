@@ -6,7 +6,7 @@ type URLProviderProps = {
   children?: React.ReactNode;
 };
 
-export const URLProvider: React.FC<URLProviderProps> = ({ children }) => {
+const URLProvider: React.FC<URLProviderProps> = ({ children }) => {
   const [urlService] = useState(() => URLService.getInstance());
 
   return (
@@ -15,3 +15,5 @@ export const URLProvider: React.FC<URLProviderProps> = ({ children }) => {
     </UrlServiceContext.Provider>
   );
 };
+
+export default URLProvider;
