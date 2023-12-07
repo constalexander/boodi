@@ -6,9 +6,7 @@ type SupabaseProviderProps = {
   children?: React.ReactNode;
 };
 
-export const SupabaseProvider: React.FC<SupabaseProviderProps> = ({
-  children,
-}) => {
+const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
   const [supabaseService] = useState(() => SupabaseService.getInstance());
 
   return (
@@ -17,3 +15,5 @@ export const SupabaseProvider: React.FC<SupabaseProviderProps> = ({
     </SupabaseServiceContext.Provider>
   );
 };
+
+export default SupabaseProvider;
