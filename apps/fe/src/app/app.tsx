@@ -8,8 +8,9 @@ import ReleaseYourWorries from './pages/release-your-worries/release-your-worrie
 import Home from './pages/home/home';
 import PrivacyPolicy from './pages/privacy-policy/privacy-policy';
 import TermsOfUse from './pages/terms-of-use/terms-of-use';
+import { observer } from 'mobx-react';
 
-export function App() {
+const App = observer(() => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <SingletonsProvider>
@@ -32,6 +33,6 @@ export function App() {
       </SingletonsProvider>
     </ThemeProvider>
   );
-}
+});
 
 export default App;
