@@ -1,29 +1,30 @@
-import { NextFunction, Request, Response } from "express";
-import { Stream } from "openai/streaming.mjs";
-import { ChatCompletionChunk } from "openai/resources/index.mjs";
-import config from "../configs/app.config.js";
-import { getStreamingCompletion } from "../services/openai.service.js";
-import { saveInteraction } from "../services/supabase.service.js";
+import { NextFunction, Request, Response } from 'express';
+import { Stream } from 'openai/streaming.mjs';
+import { ChatCompletionChunk } from 'openai/resources/index.mjs';
+import config from '../configs/app.config.js';
+import { getStreamingCompletion } from '../services/openai.service.js';
+import { saveInteraction } from '../services/supabase.service.js';
+import { countTokens } from '../utils/utils.js';
 
 export const ask = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.ws) return;
   const ws = await req.ws();
 
-  ws.on("error", console.error);
+  ws.on('error', console.error);
 
-  ws.on("message", (msg: string) => {
+  ws.on('message', (msg: string) => {
     const msgObj = JSON.parse(msg);
 
-    const startStream = async (message: string) => {
+    const startStream = async (input: string) => {
       const params = {
         messages: [
           {
-            role: "system",
+            role: 'system',
             content: config.prompts.fourNobleTruths,
           },
           {
-            role: "user",
-            content: message,
+            role: 'user',
+            content: input,
           },
         ],
         max_tokens: 512,
@@ -33,9 +34,11 @@ export const ask = async (req: Request, res: Response, next: NextFunction) => {
         params
       );
 
-      let output = "";
+      let totalTokens = countTokens(input);
+      let output = '';
       for await (const chunk of stream) {
-        const token = chunk.choices[0]?.delta.content || "";
+        const token = chunk.choices[0]?.delta.content || '';
+        totalTokens++;
         output += token;
 
         ws.send(token);
@@ -44,9 +47,10 @@ export const ask = async (req: Request, res: Response, next: NextFunction) => {
       ws.close();
 
       await saveInteraction(
-        "/four-noble-truths",
-        message,
+        '/four-noble-truths',
+        input,
         output,
+        totalTokens,
         msgObj.userUUID
       );
     };

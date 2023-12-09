@@ -58,11 +58,12 @@ const loadPromptsIntoConfig = async () => {
     import_app_config.default.prompts[p] = v;
   }
 };
-const saveInteraction = async (endpoint, input, output, userUUID) => {
+const saveInteraction = async (endpoint, input, output, totalTokens, userUUID) => {
   const values = {
     endpoint,
     user_input: input,
     boodi_output: output,
+    totalTokens,
     user_uuid: userUUID || null
   };
   const { error } = await supabase.from("interactions").insert(values);
