@@ -35,7 +35,6 @@ export const ask = async (req: Request, res: Response, next: NextFunction) => {
       );
 
       let totalTokens = countTokens(input);
-      console.log(totalTokens);
       let output = '';
       for await (const chunk of stream) {
         const token = chunk.choices[0]?.delta.content || '';

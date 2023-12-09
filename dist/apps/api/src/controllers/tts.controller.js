@@ -35,6 +35,7 @@ var import_fs = __toESM(require("fs"));
 var import_path = __toESM(require("path"));
 var import_openai_service = require("../services/openai.service.js");
 const tts = async (req, res, next) => {
+  return;
   const speechFile = import_path.default.resolve("./speech.mp3");
   async function main() {
     const mp3 = await import_openai_service.ai.audio.speech.create({
@@ -62,7 +63,6 @@ const tts = async (req, res, next) => {
       
       Thank you for joining us in this meditation and journaling circle, and we look forward to sharing this journey with you.`
     });
-    console.log(speechFile);
     const buffer = Buffer.from(await mp3.arrayBuffer());
     await import_fs.default.promises.writeFile(speechFile, buffer);
   }

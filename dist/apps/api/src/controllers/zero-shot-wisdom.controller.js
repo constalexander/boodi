@@ -60,7 +60,6 @@ const ask = async (req, res, next) => {
         params
       );
       let totalTokens = (0, import_utils.countTokens)(input);
-      console.log(totalTokens);
       let output = "";
       for await (const chunk of stream) {
         const token = chunk.choices[0]?.delta.content || "";
