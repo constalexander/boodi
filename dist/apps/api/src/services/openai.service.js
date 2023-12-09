@@ -51,7 +51,7 @@ const getStreamingCompletion = async (extraParams) => {
 const defaultParamsNonStreaming = {
   model: import_app_config.default.openai.model,
   temperature: 0.5,
-  max_tokens: 512,
+  max_tokens: 1024,
   messages: [
     {
       role: "system",
