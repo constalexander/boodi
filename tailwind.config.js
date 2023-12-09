@@ -11,9 +11,10 @@ module.exports = {
     },
     screens: {
       sm: '360px',
-      md: '720px',
-      lg: '1480px',
-      xl: '1980px',
+      md: '540px',
+      lg: '1080px',
+      xl: '1480px',
+      xxl: '1980px',
     },
     extend: {
       animation: {
@@ -93,6 +94,10 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },

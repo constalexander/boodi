@@ -93,7 +93,7 @@ export function Wisdom(props: WisdomProps) {
   return (
     <div
       id="WhatsOnYourMindPage"
-      className="w-screen min-h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between bg-gradrad-2"
+      className="w-screen h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between bg-gradrad-2"
     >
       <Header showLogo={false} />
       <div

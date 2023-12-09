@@ -20,12 +20,21 @@ class URLService {
       : 'ws://localhost:3000';
   }
 
+  get endpoints() {
+    return {
+      fourNobleTruths: '/four-noble-truths',
+      eightfoldPathFull: '/eightfold-path/full',
+      zeroShotWisdom: '/zero-shot-wisdom',
+      zeroShotWisdomQuote: '/zero-shot-wisdom/quote',
+    };
+  }
+
   get api() {
     return {
-      fourNobleTruths: `${URLService.instance.BASE_WSS}/four-noble-truths`,
-      eightfoldPathFull: `${URLService.instance.BASE_WSS}/eightfold-path/full`,
-      zeroShotWisdom: `${URLService.instance.BASE_WSS}/zero-shot-wisdom`,
-      zeroShotWisdomQuote: `${URLService.instance.BASE_WSS}/zero-shot-wisdom/quote`,
+      fourNobleTruths: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.fourNobleTruths}`,
+      eightfoldPathFull: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.eightfoldPathFull}`,
+      zeroShotWisdom: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdom}`,
+      zeroShotWisdomQuote: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdomQuote}`,
     };
   }
 }
