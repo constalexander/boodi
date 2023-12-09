@@ -8,7 +8,7 @@ import { saveInteraction } from '../services/supabase.service.js';
 import { ai, getStreamingCompletion } from '../services/openai.service.js';
 
 export const tts = async (req: Request, res: Response, next: NextFunction) => {
-  //return; // wip
+  return; // wip
   const speechFile = path.resolve('./speech.mp3');
 
   async function main() {
@@ -37,7 +37,6 @@ export const tts = async (req: Request, res: Response, next: NextFunction) => {
       
       Thank you for joining us in this meditation and journaling circle, and we look forward to sharing this journey with you.`,
     });
-    console.log(speechFile);
     const buffer = Buffer.from(await mp3.arrayBuffer());
     await fs.promises.writeFile(speechFile, buffer);
   }

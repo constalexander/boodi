@@ -1,11 +1,11 @@
-import OpenAI from "openai";
-import { Stream } from "openai/streaming.mjs";
-import { ChatCompletionChunk } from "openai/resources/index.mjs";
+import OpenAI from 'openai';
+import { Stream } from 'openai/streaming.mjs';
+import { ChatCompletionChunk } from 'openai/resources/index.mjs';
 import {
   ChatCompletionCreateParamsNonStreaming,
   ChatCompletionCreateParamsStreaming,
-} from "openai/resources/index.mjs";
-import config from "../configs/app.config.js";
+} from 'openai/resources/index.mjs';
+import config from '../configs/app.config.js';
 
 export const ai = new OpenAI({
   apiKey: config.openai.key,
@@ -31,7 +31,7 @@ export const defaultParamsNonStreaming: ChatCompletionCreateParamsNonStreaming =
     max_tokens: 1024,
     messages: [
       {
-        role: "system",
+        role: 'system',
         content: config.prompts.initBoodi,
       },
     ],

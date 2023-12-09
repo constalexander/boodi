@@ -1,17 +1,18 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 import {
   ChatCompletionChunk,
   ChatCompletionCreateParamsNonStreaming,
   ChatCompletionCreateParamsStreaming,
-} from "openai/resources/index.mjs";
-import config from "../configs/app.config.js";
+} from 'openai/resources/index.mjs';
+import config from '../configs/app.config.js';
 import {
   ai,
   defaultParamsStreaming,
   getStreamingCompletion,
-} from "../services/openai.service.js";
-import { saveInteraction } from "../services/supabase.service.js";
-import { Stream } from "openai/streaming.mjs";
+} from '../services/openai.service.js';
+import { saveInteraction } from '../services/supabase.service.js';
+import { Stream } from 'openai/streaming.mjs';
+import { countTokens } from '../utils/utils.js';
 
 // export const askFirstOnly = async (
 //   req: Request,
@@ -103,21 +104,21 @@ export const askFull = async (
   if (!req.ws) return;
   const ws = await req.ws();
 
-  ws.on("error", console.error);
+  ws.on('error', console.error);
 
-  ws.on("message", (msg: string) => {
+  ws.on('message', (msg: string) => {
     const msgObj = JSON.parse(msg);
 
-    const startStream = async (message: string) => {
+    const startStream = async (input: string) => {
       const params = {
         messages: [
           {
-            role: "system",
+            role: 'system',
             content: config.prompts.eightfoldPathFull,
           },
           {
-            role: "user",
-            content: message,
+            role: 'user',
+            content: input,
           },
         ],
         max_tokens: 512,
@@ -127,9 +128,11 @@ export const askFull = async (
         params
       );
 
-      let output = "";
+      let totalTokens = countTokens(input);
+      let output = '';
       for await (const chunk of stream) {
-        const token = chunk.choices[0]?.delta.content || "";
+        const token = chunk.choices[0]?.delta.content || '';
+        totalTokens++;
         output += token;
 
         ws.send(token);
@@ -138,9 +141,10 @@ export const askFull = async (
       ws.close();
 
       await saveInteraction(
-        "/eightfold-path/full",
-        message,
+        '/eightfold-path/full',
+        input,
         output,
+        totalTokens,
         msgObj.userUUID
       );
     };

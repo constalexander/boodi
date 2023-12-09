@@ -34,6 +34,7 @@ module.exports = __toCommonJS(eightfold_path_controller_exports);
 var import_app_config = __toESM(require("../configs/app.config.js"));
 var import_openai_service = require("../services/openai.service.js");
 var import_supabase_service = require("../services/supabase.service.js");
+var import_utils = require("../utils/utils.js");
 const askFull = async (req, res, next) => {
   if (!req.ws)
     return;
@@ -41,7 +42,7 @@ const askFull = async (req, res, next) => {
   ws.on("error", console.error);
   ws.on("message", (msg) => {
     const msgObj = JSON.parse(msg);
-    const startStream = async (message) => {
+    const startStream = async (input) => {
       const params = {
         messages: [
           {
@@ -50,7 +51,7 @@ const askFull = async (req, res, next) => {
           },
           {
             role: "user",
-            content: message
+            content: input
           }
         ],
         max_tokens: 512
@@ -58,17 +59,20 @@ const askFull = async (req, res, next) => {
       const stream = await (0, import_openai_service.getStreamingCompletion)(
         params
       );
+      let totalTokens = (0, import_utils.countTokens)(input);
       let output = "";
       for await (const chunk of stream) {
         const token = chunk.choices[0]?.delta.content || "";
+        totalTokens++;
         output += token;
         ws.send(token);
       }
       ws.close();
       await (0, import_supabase_service.saveInteraction)(
         "/eightfold-path/full",
-        message,
+        input,
         output,
+        totalTokens,
         msgObj.userUUID
       );
     };
