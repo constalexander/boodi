@@ -3,6 +3,7 @@ import { ThemeProvider } from '@boodi/providers/theme.provider';
 import { URLProvider } from '@boodi/providers/url.provider';
 import Xoxo from './pages/xoxo/xoxo';
 import NotFound404 from './pages/not-found-404/not-found-404';
+import Quotes from './pages/quotes/quotes';
 import WhatsOnYourMind from './pages/whats-on-your-mind/whats-on-your-mind';
 import Sandbox from './pages/sandbox/sandbox';
 import ReleaseYourWorries from './pages/release-your-worries/release-your-worries';
@@ -19,6 +20,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<WhatsOnYourMind />} />
             <Route path="/about" element={<Home />} />
+            <Route path="/quotes" element={<Quotes />} />
             <Route path="/chat" element={<WhatsOnYourMind />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route

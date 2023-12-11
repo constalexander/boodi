@@ -11,6 +11,7 @@ export enum gsEventName {
   findACoach_1 = 'Find a coach click',
   whatsOnYourMind_1 = 'Whats on your mind, nav from home page',
   whatsOnYourMind_2 = 'Whats on your mind, generate a message',
+  quotes_2 = 'Whats on your mind, generate a message',
   releaseYourWorries_1 = 'Release your worries, nav from home page',
   showMeTheTruth_1 = 'Show Me The Truth, generate a message',
   gimmeThatBoodi_1 = 'Gimme That Boodi click',

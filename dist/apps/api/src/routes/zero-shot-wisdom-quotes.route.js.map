@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../apps/api/src/routes/zero-shot-wisdom-quotes.route.ts"],
+  "sourcesContent": ["import express from \"express\";\nimport { ask } from \"../controllers/zero-shot-wisdom-quotes.controller.js\";\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\nimport catchErrors from \"../middlewares/catch-errors.middleware.js\";\nimport { tinyws } from \"../middlewares/tinyws.middleware.js\";\n\nconst zeroShotWisdomQuotesRouter = express.Router();\n\nzeroShotWisdomQuotesRouter.use(\"/\", limiter, tinyws(), catchErrors(ask));\n\nexport default zeroShotWisdomQuotesRouter;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,gDAAoB;AACpB,qCAAoB;AACpB,qCAAwB;AACxB,+BAAuB;AAEvB,MAAM,6BAA6B,eAAAA,QAAQ,OAAO;AAElD,2BAA2B,IAAI,KAAK,+BAAAC,aAAS,iCAAO,OAAG,+BAAAC,SAAY,6CAAG,CAAC;AAEvE,IAAO,wCAAQ;",
+  "names": ["express", "limiter", "catchErrors"]
+}

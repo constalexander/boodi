@@ -13,6 +13,7 @@ import experimentRouter from './routes/experiment.route.js';
 import globalErrorHandler from './middlewares/global-error-handler.middleware.js';
 import { tinyws } from './middlewares/tinyws.middleware.js';
 import { loadPromptsIntoConfig } from './services/supabase.service.js';
+import zeroShotWisdomQuotesRouter from './routes/zero-shot-wisdom-quotes.route.js';
 
 
 
@@ -41,6 +42,8 @@ app.use('/four-noble-truths', fourNobleTruthsRouter);
 app.use('/eightfold-path', eightfoldPathRouter);
 
 app.use('/zero-shot-wisdom', zeroShotWisdomRouter);
+
+app.use('/zero-shot-wisdom-quotes', zeroShotWisdomQuotesRouter);
 
 app.use('/tts', ttsRouter);
 

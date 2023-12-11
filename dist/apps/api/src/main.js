@@ -34,6 +34,7 @@ var import_experiment_route = __toESM(require("./routes/experiment.route.js"));
 var import_global_error_handler_middleware = __toESM(require("./middlewares/global-error-handler.middleware.js"));
 var import_tinyws_middleware = require("./middlewares/tinyws.middleware.js");
 var import_supabase_service = require("./services/supabase.service.js");
+var import_zero_shot_wisdom_quotes_route = __toESM(require("./routes/zero-shot-wisdom-quotes.route.js"));
 const app = (0, import_express.default)();
 app.set("trust proxy", "loopback");
 app.use(
@@ -51,6 +52,7 @@ app.use("/health-check", import_health_check_route.default);
 app.use("/four-noble-truths", import_four_noble_truths_route.default);
 app.use("/eightfold-path", import_eightfold_path_route.default);
 app.use("/zero-shot-wisdom", import_zero_shot_wisdom_route.default);
+app.use("/zero-shot-wisdom-quotes", import_zero_shot_wisdom_quotes_route.default);
 app.use("/tts", import_tts_route.default);
 app.use("/experiment", import_experiment_route.default);
 app.all("*", (req, res) => {

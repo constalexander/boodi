@@ -27,6 +27,7 @@ class URLService {
       fourNobleTruths: `${URLService.instance.BASE_WSS}/four-noble-truths`,
       eightfoldPathFull: `${URLService.instance.BASE_WSS}/eightfold-path/full`,
       zeroShotWisdom: `${URLService.instance.BASE_WSS}/zero-shot-wisdom`,
+      zeroShotWisdomQuote: `${URLService.instance.BASE_WSS}/zero-shot-wisdom-quote`,
     };
   }
 }
