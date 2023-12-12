@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../apps/api/src/routes/experiment.route.ts"],
-  "sourcesContent": ["import express from \"express\";\r\nimport { experiment1 } from \"../controllers/experiment.controller.js\";\r\nimport limiter from \"../middlewares/rate-limiter.middleware.js\";\r\n\r\nconst experimentRouter = express.Router();\r\n\r\nexperimentRouter.get(\"/1\", limiter, experiment1);\r\n\r\nexport default experimentRouter;\r\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,qBAAoB;AACpB,mCAA4B;AAC5B,qCAAoB;AAEpB,MAAM,mBAAmB,eAAAA,QAAQ,OAAO;AAExC,iBAAiB,IAAI,MAAM,+BAAAC,SAAS,wCAAW;AAE/C,IAAO,2BAAQ;",
-  "names": ["express", "limiter"]
-}
