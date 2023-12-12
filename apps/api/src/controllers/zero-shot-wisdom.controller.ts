@@ -102,7 +102,7 @@ export const quote = async (req: Request) => {
 
       if (config.app.env !== 'dev') {
         await saveInteraction(
-          '/zero-shot-wisdom',
+          '/zero-shot-wisdom/quote',
           input,
           output,
           totalTokens,
