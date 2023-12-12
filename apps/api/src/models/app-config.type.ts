@@ -11,7 +11,8 @@ export interface Config {
   };
   openai: {
     key: string;
-    model: "gpt-3.5-turbo" | "gpt-4" | "gpt-4-1106-preview";
+    model: 'gpt-3.5-turbo' | 'gpt-4' | 'gpt-4-1106-preview';
+    max_tokens_1: string;
   };
   prompts: {
     [key: string]: string;

@@ -28,7 +28,7 @@ export const defaultParamsNonStreaming: ChatCompletionCreateParamsNonStreaming =
   {
     model: config.openai.model,
     temperature: 0.5,
-    max_tokens: 1024,
+    max_tokens: Number(config.openai.max_tokens_1),
     messages: [
       {
         role: 'system',
