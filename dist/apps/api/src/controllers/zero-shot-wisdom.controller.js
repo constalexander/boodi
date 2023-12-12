@@ -28,14 +28,15 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var zero_shot_wisdom_controller_exports = {};
 __export(zero_shot_wisdom_controller_exports, {
-  ask: () => ask
+  ask: () => ask,
+  quote: () => quote
 });
 module.exports = __toCommonJS(zero_shot_wisdom_controller_exports);
 var import_app_config = __toESM(require("../configs/app.config.js"));
 var import_supabase_service = require("../services/supabase.service.js");
 var import_openai_service = require("../services/openai.service.js");
 var import_utils = require("../utils/utils.js");
-const ask = async (req, res, next) => {
+const ask = async (req) => {
   if (!req.ws)
     return;
   const ws = await req.ws();
@@ -54,7 +55,7 @@ const ask = async (req, res, next) => {
             content: input
           }
         ],
-        max_tokens: 512
+        max_tokens: import_app_config.default.prompts.max_tokens_1
       };
       const stream = await (0, import_openai_service.getStreamingCompletion)(
         params
@@ -68,19 +69,68 @@ const ask = async (req, res, next) => {
         ws.send(token);
       }
       ws.close();
-      await (0, import_supabase_service.saveInteraction)(
-        "/zero-shot-wisdom",
-        input,
-        output,
-        totalTokens,
-        msgObj.userUUID
+      if (import_app_config.default.app.env !== "dev") {
+        await (0, import_supabase_service.saveInteraction)(
+          "/zero-shot-wisdom",
+          input,
+          output,
+          totalTokens,
+          msgObj.userUUID
+        );
+      }
+    };
+    startStream(msgObj.inputText);
+  });
+};
+const quote = async (req) => {
+  if (!req.ws)
+    return;
+  const ws = await req.ws();
+  ws.on("error", console.error);
+  ws.on("message", (msg) => {
+    const msgObj = JSON.parse(msg);
+    const startStream = async (input) => {
+      const params = {
+        messages: [
+          {
+            role: "system",
+            content: `${import_app_config.default.prompts.zeroShotWisdom} ${import_app_config.default.prompts.quote}`
+          },
+          {
+            role: "user",
+            content: input
+          }
+        ],
+        max_tokens: import_app_config.default.prompts.max_tokens_1
+      };
+      const stream = await (0, import_openai_service.getStreamingCompletion)(
+        params
       );
+      let totalTokens = (0, import_utils.countTokens)(input);
+      let output = "";
+      for await (const chunk of stream) {
+        const token = chunk.choices[0]?.delta.content || "";
+        totalTokens++;
+        output += token;
+        ws.send(token);
+      }
+      ws.close();
+      if (import_app_config.default.app.env !== "dev") {
+        await (0, import_supabase_service.saveInteraction)(
+          "/zero-shot-wisdom",
+          input,
+          output,
+          totalTokens,
+          msgObj.userUUID
+        );
+      }
     };
     startStream(msgObj.inputText);
   });
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  ask
+  ask,
+  quote
 });
 //# sourceMappingURL=zero-shot-wisdom.controller.js.map

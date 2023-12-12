@@ -1,11 +1,11 @@
 declare global {
   interface Window {
-    _gs: (action: string, eventName: string) => void;
+    _gs: (action: string, eventName: string, extraData?: object) => void;
   }
 }
 
-export const trackEventName = (eventName: string) => {
-  window._gs('event', eventName);
+export const trackEventName = (eventName: string, extraData?: object) => {
+  window._gs('event', eventName, extraData);
 };
 
 export enum gsEventName {
@@ -23,4 +23,5 @@ export enum gsEventName {
   privacyPolicy_1 = 'Privacy Policy click',
   joinCommunity_1 = 'Join Community click',
   about_1 = 'About click',
+  wisdom = 'Wisdom, generate a message',
 }

@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import SingletonsProvider from '@boodi/providers/singletons.provider';
 import ThemeProvider from '@boodi/providers/theme.provider';
 import NotFound404 from './pages/not-found-404/not-found-404';
@@ -8,7 +9,7 @@ import ReleaseYourWorries from './pages/release-your-worries/release-your-worrie
 import Home from './pages/home/home';
 import PrivacyPolicy from './pages/privacy-policy/privacy-policy';
 import TermsOfUse from './pages/terms-of-use/terms-of-use';
-import { observer } from 'mobx-react';
+import Wisdom from './pages/wisdom/wisdom';
 
 const App = observer(() => {
   return (
@@ -27,6 +28,7 @@ const App = observer(() => {
             <Route path="/sandbox" element={<Sandbox />} />
             <Route path="/terms" element={<TermsOfUse />} />
             <Route path="/whats-on-your-mind" element={<WhatsOnYourMind />} />
+            <Route path="/wisdom" element={<Wisdom />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
         </Router>

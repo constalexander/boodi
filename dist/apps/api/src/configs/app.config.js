@@ -53,7 +53,8 @@ const config = {
     key: env.OPENAI_KEY || "",
     //model: "gpt-3.5-turbo",
     //model: "gpt-4",
-    model: "gpt-4-1106-preview"
+    model: "gpt-4-1106-preview",
+    max_tokens_1: env.MAX_TOKENS_1 ?? ""
   },
   // see loadPromptsIntoConfig in supabase.service.js
   prompts: {
@@ -62,7 +63,8 @@ const config = {
     eightfoldPathFirstOnly: "",
     eightfoldPathFull: "",
     zeroShotLearningAdvice: "",
-    zeroShotWisdom: ""
+    zeroShotWisdom: "",
+    quote: ""
   }
 };
 var app_config_default = config;

@@ -37,6 +37,7 @@ var import_rate_limiter_middleware = __toESM(require("../middlewares/rate-limite
 var import_catch_errors_middleware = __toESM(require("../middlewares/catch-errors.middleware.js"));
 var import_tinyws_middleware = require("../middlewares/tinyws.middleware.js");
 const zeroShotWisdomRouter = import_express.default.Router();
-zeroShotWisdomRouter.use("/", import_rate_limiter_middleware.default, (0, import_tinyws_middleware.tinyws)(), (0, import_catch_errors_middleware.default)(import_zero_shot_wisdom_controller.ask));
+zeroShotWisdomRouter.get("/", import_rate_limiter_middleware.default, (0, import_tinyws_middleware.tinyws)(), (0, import_catch_errors_middleware.default)(import_zero_shot_wisdom_controller.ask));
+zeroShotWisdomRouter.get("/quote", import_rate_limiter_middleware.default, (0, import_tinyws_middleware.tinyws)(), (0, import_catch_errors_middleware.default)(import_zero_shot_wisdom_controller.quote));
 var zero_shot_wisdom_route_default = zeroShotWisdomRouter;
 //# sourceMappingURL=zero-shot-wisdom.route.js.map
