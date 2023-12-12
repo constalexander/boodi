@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "npx concurrently \"npx nx serve fe\" \"npx nx serve api\"",
     "start:api": "node dist/apps/api/src/main.js",
+    "heroku-postbuild": "npx nx build api",
     "test:spec": "nx test",
     "test:e2e": "nx e2e e2e --watch --browser=chrome",
     "test:e2e-headless": "nx e2e e2e"
