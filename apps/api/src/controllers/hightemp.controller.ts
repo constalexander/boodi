@@ -27,6 +27,7 @@ export const ask = async (req: Request) => {
             content: input,
           },
         ],
+        max_tokens: 128,
         temperature: req.temp,
       };
 
