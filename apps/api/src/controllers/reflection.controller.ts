@@ -2,8 +2,8 @@ import { Request } from 'express';
 import { Stream } from 'openai/streaming.mjs';
 import { ChatCompletionChunk } from 'openai/resources/index.mjs';
 import config from '../configs/app.config.js';
-import { getStreamingCompletion } from '../services/openai.service.js';
 import { saveInteraction } from '../services/supabase.service.js';
+import { getStreamingCompletion } from '../services/openai.service.js';
 import { countTokens } from '../utils/utils.js';
 
 export const ask = async (req: Request) => {
@@ -20,7 +20,7 @@ export const ask = async (req: Request) => {
         messages: [
           {
             role: 'system',
-            content: config.prompts.fourNobleTruths,
+            content: `${config.prompts.reflection}`,
           },
           {
             role: 'user',
@@ -45,15 +45,17 @@ export const ask = async (req: Request) => {
 
       ws.close();
 
-      await saveInteraction(
-        '/four-noble-truths',
-        input,
-        output,
-        totalTokens,
-        req.userUUID
-      );
+      if (config.app.env !== 'dev') {
+        await saveInteraction(
+          '/reflection',
+          input,
+          output,
+          totalTokens,
+          req.userUUID
+        );
+      }
     };
 
-    startStream(req.suffering);
+    startStream(req.inputText);
   });
 };

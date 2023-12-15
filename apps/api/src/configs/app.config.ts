@@ -29,13 +29,14 @@ const config: Config = {
   },
   // see loadPromptsIntoConfig in supabase.service.js
   prompts: {
-    initBoodi: '',
-    fourNobleTruths: '',
     eightfoldPathFirstOnly: '',
     eightfoldPathFull: '',
+    fourNobleTruths: '',
+    initBoodi: '',
+    quote: '',
+    reflection: '',
     zeroShotLearningAdvice: '',
     zeroShotWisdom: '',
-    quote: '',
   },
 };
 
