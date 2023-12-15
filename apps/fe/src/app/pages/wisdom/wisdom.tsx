@@ -45,6 +45,14 @@ export function Wisdom(props: WisdomProps) {
       mainline: 'Quote',
       endpoint: urlService.api.zeroShotWisdomQuote,
     },
+    3: {
+      mainline: 'Reflection',
+      endpoint: urlService.api.reflection,
+    },
+    4: {
+      mainline: 'High Temperature',
+      endpoint: urlService.api.hightemp,
+    },
   };
 
   const { mainline, endpoint } = wisdomTools[version];
@@ -72,7 +80,10 @@ export function Wisdom(props: WisdomProps) {
     webSocketRef.current = socket;
 
     socket.onopen = () => {
-      const request = JSON.stringify({ inputText, userUUID });
+      let temp = 0.5;
+      if (version === 4) temp = 1.75;
+
+      const request = JSON.stringify({ inputText, userUUID, temp });
       socket.send(request);
     };
 

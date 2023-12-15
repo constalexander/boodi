@@ -13,7 +13,7 @@ export const ask = async (req: Request) => {
   ws.on('error', console.error);
 
   ws.on('message', (msg: string) => {
-    const msgObj = JSON.parse(msg);
+    const req = JSON.parse(msg);
 
     const startStream = async (input: string) => {
       const params = {
@@ -27,7 +27,6 @@ export const ask = async (req: Request) => {
             content: input,
           },
         ],
-        max_tokens: config.prompts.max_tokens_1,
       };
 
       const stream: Stream<ChatCompletionChunk> = await getStreamingCompletion(
@@ -51,12 +50,12 @@ export const ask = async (req: Request) => {
           input,
           output,
           totalTokens,
-          msgObj.userUUID
+          req.userUUID
         );
       }
     };
 
-    startStream(msgObj.inputText);
+    startStream(req.inputText);
   });
 };
 
@@ -67,7 +66,7 @@ export const quote = async (req: Request) => {
   ws.on('error', console.error);
 
   ws.on('message', (msg: string) => {
-    const msgObj = JSON.parse(msg);
+    const req = JSON.parse(msg);
 
     const startStream = async (input: string) => {
       const params = {
@@ -81,7 +80,6 @@ export const quote = async (req: Request) => {
             content: input,
           },
         ],
-        max_tokens: config.prompts.max_tokens_1,
       };
 
       const stream: Stream<ChatCompletionChunk> = await getStreamingCompletion(
@@ -106,11 +104,11 @@ export const quote = async (req: Request) => {
           input,
           output,
           totalTokens,
-          msgObj.userUUID
+          req.userUUID
         );
       }
     };
 
-    startStream(msgObj.inputText);
+    startStream(req.inputText);
   });
 };
