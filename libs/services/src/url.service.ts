@@ -22,8 +22,9 @@ class URLService {
 
   get endpoints() {
     return {
-      fourNobleTruths: '/four-noble-truths',
       eightfoldPathFull: '/eightfold-path/full',
+      fourNobleTruths: '/four-noble-truths',
+      reflection: '/reflection',
       zeroShotWisdom: '/zero-shot-wisdom',
       zeroShotWisdomQuote: '/zero-shot-wisdom/quote',
     };
@@ -31,8 +32,9 @@ class URLService {
 
   get api() {
     return {
-      fourNobleTruths: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.fourNobleTruths}`,
       eightfoldPathFull: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.eightfoldPathFull}`,
+      fourNobleTruths: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.fourNobleTruths}`,
+      reflection: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.reflection}`,
       zeroShotWisdom: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdom}`,
       zeroShotWisdomQuote: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdomQuote}`,
     };

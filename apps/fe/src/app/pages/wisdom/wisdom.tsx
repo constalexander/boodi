@@ -45,7 +45,17 @@ export function Wisdom(props: WisdomProps) {
       mainline: 'Quote',
       endpoint: urlService.api.zeroShotWisdomQuote,
     },
+    3: {
+      mainline: 'Reflection',
+      endpoint: urlService.api.reflection,
+    },
+    4: {
+      mainline: 'High Temperature',
+      endpoint: urlService.api.reflection,
+    },
   };
+
+  console.log('wisdomTools', wisdomTools);
 
   const { mainline, endpoint } = wisdomTools[version];
 

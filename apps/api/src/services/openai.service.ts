@@ -27,7 +27,7 @@ export const getStreamingCompletion = async (
 export const defaultParamsNonStreaming: ChatCompletionCreateParamsNonStreaming =
   {
     model: config.openai.model,
-    temperature: 0.5,
+    temperature: 1,
     max_tokens: Number(config.openai.max_tokens_1),
     messages: [
       {
