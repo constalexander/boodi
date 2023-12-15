@@ -83,8 +83,6 @@ export function PastMessages(props: PastMessagesProps) {
         break;
     }
 
-    console.log('endpoints', endpoints);
-
     const {
       data: { user },
       error: getUserError,
