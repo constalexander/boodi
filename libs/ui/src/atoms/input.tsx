@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import * as React from 'react';
 import { cn } from '@boodi/ui';
 

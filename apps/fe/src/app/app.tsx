@@ -10,6 +10,7 @@ import Home from './pages/home/home';
 import PrivacyPolicy from './pages/privacy-policy/privacy-policy';
 import TermsOfUse from './pages/terms-of-use/terms-of-use';
 import Wisdom from './pages/wisdom/wisdom';
+import PastMessages from './pages/past-messages/past-messages';
 
 const App = observer(() => {
   return (
@@ -20,6 +21,7 @@ const App = observer(() => {
             <Route path="/" element={<WhatsOnYourMind />} />
             <Route path="/about" element={<Home />} />
             <Route path="/chat" element={<WhatsOnYourMind />} />
+            <Route path="/past-messages" element={<PastMessages />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route
               path="/release-your-worries"

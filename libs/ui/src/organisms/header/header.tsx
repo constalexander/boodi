@@ -64,6 +64,10 @@ export const Header = observer((props: HeaderProps) => {
     );
   };
 
+  const pastMessages = async () => {
+    navigate('/past-messages');
+  };
+
   const signOut = async () => {
     const { error } = await supabaseService.supabase.auth.signOut();
     if (!error) window.location.reload();
@@ -134,14 +138,24 @@ export const Header = observer((props: HeaderProps) => {
               </Dialog>
             )}
             {session && (
-              <DropdownMenuItem
-                onSelect={(e) => {
-                  e.preventDefault();
-                  signOut();
-                }}
-              >
-                Sign Out
-              </DropdownMenuItem>
+              <>
+                <DropdownMenuItem
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    pastMessages();
+                  }}
+                >
+                  Past Messages
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    signOut();
+                  }}
+                >
+                  Sign Out
+                </DropdownMenuItem>
+              </>
             )}
           </DropdownMenuContent>
         </DropdownMenu>
