@@ -35,6 +35,8 @@ enum PageTabs {
   Release = 'Release your worries',
   WisdomTool1 = 'Wisdom tool 1',
   WisdomTool2 = 'Wisdom tool 2',
+  WisdomTool3 = 'Wisdom tool 3',
+  WisdomTool4 = 'Wisdom tool 4',
 }
 
 export function PastMessages(props: PastMessagesProps) {
@@ -46,6 +48,8 @@ export function PastMessages(props: PastMessagesProps) {
     PageTabs.Release,
     PageTabs.WisdomTool1,
     PageTabs.WisdomTool2,
+    PageTabs.WisdomTool3,
+    PageTabs.WisdomTool4,
   ];
   const [activeTab, setActiveTab] = useState<PageTabs>(PageTabs.What);
 
@@ -77,6 +81,12 @@ export function PastMessages(props: PastMessagesProps) {
         break;
       case PageTabs.WisdomTool2:
         endpoints = [urlService.endpoints.zeroShotWisdomQuote];
+        break;
+      case PageTabs.WisdomTool3:
+        endpoints = [urlService.endpoints.reflection];
+        break;
+      case PageTabs.WisdomTool4:
+        endpoints = [urlService.endpoints.hightemp];
         break;
       default:
         endpoints = [];
