@@ -20,13 +20,14 @@ export const ask = async (req: Request) => {
         messages: [
           {
             role: 'system',
-            content: `${config.prompts.reflection}`,
+            content: `${config.prompts.zeroShotWisdom} ${config.prompts.quote}`,
           },
           {
             role: 'user',
             content: input,
           },
         ],
+        temperature: req.temp,
       };
 
       const stream: Stream<ChatCompletionChunk> = await getStreamingCompletion(
@@ -47,7 +48,7 @@ export const ask = async (req: Request) => {
 
       if (config.app.env !== 'dev') {
         await saveInteraction(
-          '/reflection',
+          '/hightemp',
           input,
           output,
           totalTokens,

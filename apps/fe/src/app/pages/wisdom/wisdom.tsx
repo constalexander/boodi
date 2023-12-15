@@ -51,7 +51,7 @@ export function Wisdom(props: WisdomProps) {
     },
     4: {
       mainline: 'High Temperature',
-      endpoint: urlService.api.reflection,
+      endpoint: urlService.api.hightemp,
     },
   };
 
@@ -82,7 +82,10 @@ export function Wisdom(props: WisdomProps) {
     webSocketRef.current = socket;
 
     socket.onopen = () => {
-      const request = JSON.stringify({ inputText, userUUID });
+      let temp = 0.5;
+      if (version === 4) temp = 1.75;
+
+      const request = JSON.stringify({ inputText, userUUID, temp });
       socket.send(request);
     };
 

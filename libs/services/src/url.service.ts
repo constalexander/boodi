@@ -24,6 +24,7 @@ class URLService {
     return {
       eightfoldPathFull: '/eightfold-path/full',
       fourNobleTruths: '/four-noble-truths',
+      hightemp: '/hightemp',
       reflection: '/reflection',
       zeroShotWisdom: '/zero-shot-wisdom',
       zeroShotWisdomQuote: '/zero-shot-wisdom/quote',
@@ -34,6 +35,7 @@ class URLService {
     return {
       eightfoldPathFull: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.eightfoldPathFull}`,
       fourNobleTruths: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.fourNobleTruths}`,
+      hightemp: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.hightemp}`,
       reflection: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.reflection}`,
       zeroShotWisdom: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdom}`,
       zeroShotWisdomQuote: `${URLService.instance.BASE_WSS}${URLService.instance.endpoints.zeroShotWisdomQuote}`,

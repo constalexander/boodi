@@ -20,6 +20,8 @@ export const getStreamingCompletion = async (
     messages: [...defaultParamsStreaming.messages, ...extraParams.messages],
   };
 
+  console.warn(extraParams, params.temperature);
+
   const completion = await ai.chat.completions.create(params);
   return completion;
 };

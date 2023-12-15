@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request } from 'express';
 import { Stream } from 'openai/streaming.mjs';
 import { ChatCompletionChunk } from 'openai/resources/index.mjs';
 import config from '../configs/app.config.js';
@@ -6,14 +6,14 @@ import { getStreamingCompletion } from '../services/openai.service.js';
 import { saveInteraction } from '../services/supabase.service.js';
 import { countTokens } from '../utils/utils.js';
 
-export const ask = async (req: Request, res: Response, next: NextFunction) => {
+export const ask = async (req: Request) => {
   if (!req.ws) return;
   const ws = await req.ws();
 
   ws.on('error', console.error);
 
   ws.on('message', (msg: string) => {
-    const msgObj = JSON.parse(msg);
+    const req = JSON.parse(msg);
 
     const startStream = async (input: string) => {
       const params = {
@@ -27,7 +27,6 @@ export const ask = async (req: Request, res: Response, next: NextFunction) => {
             content: input,
           },
         ],
-        max_tokens: 512,
       };
 
       const stream: Stream<ChatCompletionChunk> = await getStreamingCompletion(
@@ -51,10 +50,10 @@ export const ask = async (req: Request, res: Response, next: NextFunction) => {
         input,
         output,
         totalTokens,
-        msgObj.userUUID
+        req.userUUID
       );
     };
 
-    startStream(msgObj.suffering);
+    startStream(req.suffering);
   });
 };
