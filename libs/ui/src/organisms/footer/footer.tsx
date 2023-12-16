@@ -21,6 +21,15 @@ export function Footer(props: FooterProps) {
       <Button
         variant="ghost"
         onClick={() => {
+          trackEventName(gsEventName.footer_moreTools);
+          navigate('/tools');
+        }}
+      >
+        More Tools
+      </Button>
+      <Button
+        variant="ghost"
+        onClick={() => {
           trackEventName(gsEventName.joinCommunity_1);
           window.open(
             'https://www.facebook.com/groups/exponentialenlightenment',

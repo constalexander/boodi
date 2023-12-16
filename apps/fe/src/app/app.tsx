@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom';
 import { observer } from 'mobx-react';
 import SingletonsProvider from '@boodi/providers/singletons.provider';
 import ThemeProvider from '@boodi/providers/theme.provider';
@@ -11,6 +16,7 @@ import PrivacyPolicy from './pages/privacy-policy/privacy-policy';
 import TermsOfUse from './pages/terms-of-use/terms-of-use';
 import Wisdom from './pages/wisdom/wisdom';
 import PastMessages from './pages/past-messages/past-messages';
+import ToolsPage from './pages/tools-page/tools-page';
 
 const App = observer(() => {
   return (
@@ -18,7 +24,7 @@ const App = observer(() => {
       <SingletonsProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<WhatsOnYourMind />} />
+            <Route path="/" element={<Navigate to="/wisdom?v=1" replace />} />
             <Route path="/about" element={<Home />} />
             <Route path="/chat" element={<WhatsOnYourMind />} />
             <Route path="/past-messages" element={<PastMessages />} />
@@ -29,7 +35,11 @@ const App = observer(() => {
             />
             <Route path="/sandbox" element={<Sandbox />} />
             <Route path="/terms" element={<TermsOfUse />} />
-            <Route path="/whats-on-your-mind" element={<WhatsOnYourMind />} />
+            <Route path="/tools" element={<ToolsPage />} />
+            <Route
+              path="whats-on-your-mind"
+              element={<Navigate to="/wisdom?v=1" replace />}
+            />
             <Route path="/wisdom" element={<Wisdom />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
