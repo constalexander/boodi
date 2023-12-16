@@ -21,7 +21,7 @@ export function Footer(props: FooterProps) {
       <Button
         variant="ghost"
         onClick={() => {
-          trackEventName(gsEventName.about_1);
+          trackEventName(gsEventName.footer_moreTools);
           navigate('/tools');
         }}
       >
