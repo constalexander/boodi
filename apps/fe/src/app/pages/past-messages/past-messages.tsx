@@ -13,6 +13,7 @@ import {
   formatDate,
   Button,
   Pagination,
+  Footer,
 } from '@boodi/ui';
 import useSupabaseService from '@boodi/hooks/supabase.hook';
 import useURLService from '@boodi/hooks/url.hook';
@@ -132,14 +133,16 @@ export function PastMessages(props: PastMessagesProps) {
   return (
     <div
       id="PastMessagesPage"
-      className="w-screen h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-start bg-gradrad-2"
+      className="w-screen h-screen overflow-x-hidden overflow-y-auto flex flex-col items-center justify-between bg-gradrad-2"
     >
       <Header />
-      <div className="p-10 w-full max-w-[600px]">
+      <div className="page-content p-10 w-full max-w-[600px]">
+        <h1 className="text-center mb-5">Past Messages</h1>
+
         <Tabs
           defaultValue={PageTabs.What}
           orientation="vertical"
-          className="w-full "
+          className="w-full"
         >
           <TabsList className="flex flex-col bg-slate-700 mb-5">
             {tabs.map((tabValue) => (
@@ -157,7 +160,7 @@ export function PastMessages(props: PastMessagesProps) {
             ))}
           </TabsList>
 
-          <div className="grid grid-cols-3 items-center w-full">
+          <div className="w-full text-right">
             <Button
               variant="ghost"
               className="w-[100px]"
@@ -170,9 +173,8 @@ export function PastMessages(props: PastMessagesProps) {
               )}
               Sort all
             </Button>
-
-            <div className="w-[100px]"></div>
           </div>
+
           <TabsContent value={activeTab}>
             <Accordion type="single" className="text-slate-100" collapsible>
               {interactions.map((interaction, index) => (
@@ -199,6 +201,7 @@ export function PastMessages(props: PastMessagesProps) {
           </TabsContent>
         </Tabs>
       </div>
+      <Footer />
     </div>
   );
 }

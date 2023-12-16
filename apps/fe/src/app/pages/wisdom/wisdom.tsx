@@ -55,8 +55,6 @@ export function Wisdom(props: WisdomProps) {
     },
   };
 
-  console.log('wisdomTools', wisdomTools);
-
   const { mainline, endpoint } = wisdomTools[version];
 
   const receiveWisdom = async () => {
@@ -83,7 +81,7 @@ export function Wisdom(props: WisdomProps) {
 
     socket.onopen = () => {
       let temp = 0.5;
-      if (version === 4) temp = 1.75;
+      if (version === 4) temp = 1.71;
 
       const request = JSON.stringify({ inputText, userUUID, temp });
       socket.send(request);
