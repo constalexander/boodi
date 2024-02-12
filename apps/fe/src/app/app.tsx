@@ -5,6 +5,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import LogRocket from 'logrocket';
 import SingletonsProvider from '@boodi/providers/singletons.provider';
 import ThemeProvider from '@boodi/providers/theme.provider';
 import NotFound404 from './pages/not-found-404/not-found-404';
@@ -17,6 +18,9 @@ import TermsOfUse from './pages/terms-of-use/terms-of-use';
 import Wisdom from './pages/wisdom/wisdom';
 import PastMessages from './pages/past-messages/past-messages';
 import ToolsPage from './pages/tools-page/tools-page';
+
+if (process.env.NODE_ENV === 'production')
+  LogRocket.init(import.meta.env.VITE_LOGROCKET_ID);
 
 const App = observer(() => {
   return (
