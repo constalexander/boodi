@@ -5,7 +5,7 @@ declare global {
 }
 
 export const trackEventName = (eventName: string, extraData?: object) => {
-  // window._gs('event', eventName, extraData);
+  window._gs('event', eventName, extraData);
 };
 
 export enum gsEventName {
