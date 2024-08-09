@@ -22,9 +22,8 @@ const config: Config = {
   },
   openai: {
     key: env.OPENAI_KEY || '',
-    //model: "gpt-3.5-turbo",
-    //model: "gpt-4",
-    model: 'gpt-4-1106-preview',
+    // model: 'gpt-4-1106-preview',
+    model: 'gpt-4o-2024-08-06',
     max_tokens_1: env.MAX_TOKENS_1 ?? '',
   },
   // see loadPromptsIntoConfig in supabase.service.js
