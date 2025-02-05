@@ -142,18 +142,6 @@ export function Wisdom(props: WisdomProps) {
           </Button>
         </div>
 
-        <div className="text-base text-gray-300 mt-5 group opacity-80 hover:opacity-100 transition-opacity duration-100">
-          "Nsight Chat" by
-          <a
-            href="https://www.alexcrist.com"
-            target="_blank"
-            onClick={() => window._gs('event', 'Wisdom: Alex Crist')}
-            className="text-blueIce-500 underline ml-1"
-          >
-            Alex Crist
-          </a>
-        </div>
-
         <div id="OutputArea" className="mx-auto mt-7">
           <div
             className={`${styles['boodi-response']}`}

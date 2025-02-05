@@ -9,6 +9,18 @@ export function Footer(props: FooterProps) {
 
   return (
     <div className="w-full text-center mb-5">
+      <div className="text-base text-gray-300 mb-3 group opacity-80 hover:opacity-100 transition-opacity duration-100">
+        "Nsight Chat" by
+        <a
+          href="https://www.alexcrist.com"
+          target="_blank"
+          onClick={() => window._gs('event', 'Wisdom: Alex Crist')}
+          className="text-blueIce-500 underline ml-1"
+        >
+          Alex Crist
+        </a>
+      </div>
+
       <Button
         variant="ghost"
         onClick={() => {
